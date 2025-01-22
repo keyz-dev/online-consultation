@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class ContactInformation extends Model
+{
+    protected $table = "contact_information";
+    protected $fillable = [
+        'name',
+        'icone_url'
+    ];
+
+    public function doctor(){
+        return $this->belongsToMany(Doctor::class, 'doctor_contacts')
+        ->using(DoctorContact::class)
+        ->withPivot('value')
+        ->withTimestamps();
+    }
+}

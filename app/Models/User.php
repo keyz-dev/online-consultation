@@ -21,6 +21,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'gender',
+        'age',
+        'dob',
+        'Nationality',
+        'city',
+        'role',
+        'profile_image'
+
     ];
 
     /**
@@ -41,8 +49,27 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'name',
+            'email',
+            'password',
+            'gender',
+            'age',
+            'dob',
+            'Nationality',
+            'city',
+            'role',
+            'profile_image'
         ];
+    }
+
+    public function notifications(){
+        return $this->hasMany(Notification::class);
+    }
+
+    public function doctor(){
+        return $this->hasOne(Doctor::class);
+    }
+    public function patient(){
+        return $this->hasOne(Patient::class);
     }
 }
