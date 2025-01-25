@@ -1,0 +1,37 @@
+header nav div ul li:not(:last-child) a{
+    position: relative;
+    overflow: hidden;
+    text-wrap: nowrap;
+
+    &::before{
+        position: absolute;
+        content: '';
+        top: 105%;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background: rgb(36, 75, 175);
+        transform: scaleX(0);
+        transition: all 0.2s ease;
+    }
+    &:hover{
+        color: #3e8cff;
+    }
+    &:hover::before{
+        transform: scaleX(1)
+    }
+}
+header nav #active-link{
+    color: #3e8cff;
+}
+header nav #active-link::before{
+    transform: scaleX(1);
+}
+
+.list-item{
+    @apply m-0 p-1 ml-5
+}
+
+.cursor-x{
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12'/%3E%3C/svg%3E"), auto;;
+}

@@ -18,13 +18,6 @@ class Doctor extends Model
         'consultation_fee'            
     ] ;
 
-    public function contact(){
-        return $this->belongsToMany(ContactInformation::class, 'doctor_contacts')
-        ->using(DoctorContact::class)
-        ->withPivot('value')
-        ->withTimestamps();
-    }
-
     public function user(){
         return $this->belongsTo(User::class,'user_id');
     }

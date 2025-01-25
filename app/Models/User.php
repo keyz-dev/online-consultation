@@ -50,7 +50,6 @@ class User extends Authenticatable
     {
         return [
             'name',
-            'email',
             'password',
             'gender',
             'age',
@@ -71,5 +70,12 @@ class User extends Authenticatable
     }
     public function patient(){
         return $this->hasOne(Patient::class);
+    }
+
+    public function contact(){
+        return $this->belongsToMany(ContactInformation::class, 'user_contacts')
+        ->using(UserContact::class)
+        ->withPivot('value')
+        ->withTimestamps();
     }
 }
