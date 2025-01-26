@@ -1,3 +1,11 @@
-<div>
-    <!-- Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. - Marie Curie -->
-</div>
+@extends('layout.dashboard')
+
+@push('scripts')
+    <script type="text/javascript" src="{{asset('js/product.js')}}" defer></script>
+@endpush
+
+@section('content')
+    <div>
+        This is the Patient dashboard
+    </div>
+@endsection

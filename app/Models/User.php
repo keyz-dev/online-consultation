@@ -72,8 +72,8 @@ class User extends Authenticatable
         return $this->hasOne(Patient::class);
     }
 
-    public function contact(){
-        return $this->belongsToMany(ContactInformation::class, 'user_contacts')
+    public function contacts(){
+        return $this->belongsToMany(ContactInformation::class, 'user_contacts', 'user_id', 'contact_id')
         ->using(UserContact::class)
         ->withPivot('value')
         ->withTimestamps();

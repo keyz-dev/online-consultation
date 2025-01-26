@@ -13,8 +13,8 @@
     --base-clr: #e2e8f0;
     --line-clr: #ced1dd;
     --hover-clr: #f2f6f8;
-    --text-clr: #333333;
-    --accent-clr: #2f74fa;
+    --text-clr: #595858;
+    --accent-clr: #3e8cff;
     --secondary-text-clr: #b0b3c1
 }
 
@@ -28,8 +28,12 @@
     top: 0;
     align-self: start;
     transition: 300ms ease-in-out;
-    overflow: hidden;
+    overflow: auto;
     text-wrap: nowrap;
+    scrollbar-width: none !important;
+}
+#sidebar::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
 }
 #sidebar.close{
     padding: 1em 5px;

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\ContactInformation;
+use App\Models\UserContact;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StoreUserRequest;
 
 class UserController extends Controller
 {
@@ -21,36 +24,45 @@ class UserController extends Controller
         return view("user.register");
     }
 
-    public function store(Request $request){
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:5',
-            'profile_image' => 'nullable|image|mimes:jpg,png,jpeg,webp,ico,svg,jiff|max:2048',
-            'phone' => 'required|min:9',
-            'whatsapp' => 'required|min:9',
-            'Nationality' => 'required',
-            'city' => 'required',
-            'gender' => 'required',
-            'dob' => 'required|date|before_or_equal:today'
+    public function store(StoreUserRequest $request){
+        // extract the validated request parameters
+        $validated = $request->validated();
+
+        if(isset($validated['profile_image']) && $validated['profile_image'] != null){
+            $validated['profile_image'] = $this->file_handler($request, 'profile_image', 'profile_images');
+        }
+        $mass_ass = collect($validated)->only([
+            'name',
+            'password',
+            'gender',
+            'age',
+            'dob',
+            'Nationality',
+            'city',
+            'role',
+            'profile_image'
         ]);
 
-        if( $validated['gender'] == '1')
-            $validated['gender'] = 'male';
-        else    
-           $validated['gender'] = 'female';
-        
-        // set the user role
-        $validated['role'] = 'admin';
-        $validated['profile_image'] = $this->file_handler($request, 'profile_image', 'profile_images');
-        
-        // Create a new user
+        $mass_ass['password'] = Hash::make($mass_ass['password']);
+        $mass_array = $mass_ass->toArray();
 
-        // User::create($validated);    
-        // session([
-        //     'status' => 'success',
-        //     "message"=>"User created successfully!"
-        // ]);
+        // Create a new user
+        $user = User::create($mass_array);    
+        // Get the list of contacts
+        $contacts = ContactInformation::all();
+
+        foreach($validated as $key => $value ){
+            // get the contact information by name and extract the id, so as to insert into the user_contacts table
+            $contact = $contacts->where('name', $key)->first();
+            if( $contact ){
+                $user->contacts()->attach($contact->id, compact('value'));
+            }
+        }
+        session([
+            'status' => 'success',
+            "message"=>"User created successfully!"
+        ]);
+
         return redirect()->route('user.login');
     }
 
@@ -59,24 +71,34 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
-    
-        // Attempt to find the user
-        $user = User::where('email', $request->email)->first();
-    
+        $email = $request->email;
+        // attempt to find the user based on the email value
+        $user = User::with('contacts')->whereHas('contacts', function($query) use ($email) {
+            $query->where('value', $email);
+        })->first();
+
         if ($user && Hash::check($request->password, $user->password)) {
             // Log the user in
             Auth::login($user);
 
-            // verify if the request is for a checkout
-            if (session()->has('checkout')){
-                return redirect()->route('order.create');
+            // verify if the request is for booking an appointment
+            if (session()->has('appointment_request')){
+                // redirect to the booking appointment page
             }
-            if($user->role_id == 1){
-                return redirect()->route('dashboard.index');
+
+            if($user->role == "admin"){
+                return redirect()->route('dashboard.admin');
             }
+            if($user->role == "doctor"){
+                return redirect()->route('dashboard.doctor');
+            }
+            if($user->role == "patient"){
+                return redirect()->route('dashboard.doctor');
+            }
+
             return redirect()->route('home.index');
             // Return the authenticated user info or a redirect 
-        } else {
+        } else{
             return back()->withErrors(['password' => 'Incorrect Email or Password.']);
         }
     }

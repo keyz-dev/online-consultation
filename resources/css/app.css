@@ -21,6 +21,6 @@ html{
         @apply bg-accent text-white hover:opacity-75;
     }
     .btn-secondarybtn {
-        @apply bg-primary text-white hover:opacity-75 border border-border_clr;
+        @apply bg-accent text-white hover:opacity-75 border border-border_clr;
     }
 }

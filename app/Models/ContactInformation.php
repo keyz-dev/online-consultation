@@ -13,7 +13,7 @@ class ContactInformation extends Model
     ];
 
     public function doctor(){
-        return $this->belongsToMany(Doctor::class, 'user_contacts')
+        return $this->belongsToMany(Doctor::class, 'user_contacts', 'contact_id', 'user_id')
         ->using(UserContact::class)
         ->withPivot('value')
         ->withTimestamps();

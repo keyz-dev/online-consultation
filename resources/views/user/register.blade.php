@@ -22,7 +22,7 @@
 
 @section('content')
 <section class="container">
-    <form action="{{route("user.register")}}" method="post" class="mx-auto w-full md:min-w-[50%] md:max-w-[90%] lg:max-w-[90%] flex items-center sm:items-start sm:flex-row justify-center h-auto gap-4 md:px-9 md:py-4" enctype="multipart/form-data">
+    <form action="{{route("user.create")}}" method="POST" class="mx-auto w-full md:min-w-[50%] md:max-w-[90%] lg:max-w-[90%] flex items-center sm:items-start sm:flex-row justify-center h-auto gap-4 md:px-9 md:py-4" enctype="multipart/form-data">
         @csrf
         <div class="flex w-full md:w-[450px] flex-col gap-4 items-center">
             <h1 class="text-xl font-semibold">Join Us Now</h1>
@@ -47,7 +47,7 @@
                         <x-input type="email" name="email" label="Email" placeholder="User email" required/>
                 
                         <div class="flex flex-col sm:flex-row gap-8 w-full items-center justify-between">
-                            <x-input type="text" name="Nationality" label="Nationality" placeholder="Enter your country" required/>
+                            <x-input type="text" name="Nationality" label="Country" placeholder="Enter your country" required/>
                             <x-input type="text" name="city" label="City" placeholder="Enter your city" required/>
                         </div>
             
@@ -56,8 +56,8 @@
                             <div class="w-full flex flex-col">
                                 <label for="gender">Gender</label>
                                 <select class="border-2 border-border_clr outline-none p-2 focus:border-accent transition-all ease-in-out duration-600" name="gender" id="gender">
-                                    <option value="1">Male</option>
-                                    <option value="2">Female</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
                                 </select>
                             </div>
                         </div>
@@ -85,8 +85,8 @@
                             <div class="h-[200px] w-full flex items-center justify-center">
                                 <label for="input-file" id="drop-area" class="w-full h-full flex items-center justify-center flex-col">  
                                     <input type="file" accept="image/*" name="profile_image" id="input-file" hidden>
-                                    <div class="border h-full flex flex-col gap-2 items-center justify-center w-full border-2-dashed border-border_clr bg-success rounded-sm bg-no-repeat bg-cover bg-center" id="img-view">
-                                        <i class="fas fa-cloud-upload text-success-bg text-3xl font-semibold"></i>
+                                    <div class="border h-full flex flex-col gap-2 items-center justify-center w-full border-2-dashed border-border_clr bg-pending-bg rounded-sm bg-no-repeat bg-cover bg-center" id="img-view">
+                                        <i class="fas fa-cloud-upload text-accent text-3xl font-semibold"></i>
                                         <p class="text-center text-sm text-secondary">Drop or click here <br/> to upload image</p>
                                     </div>
                                     @error('profile_image')
