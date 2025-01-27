@@ -78,4 +78,8 @@ class User extends Authenticatable
         ->withPivot('value')
         ->withTimestamps();
     }
+
+    public function testimonial(){
+        return $this->hasOne(Testimonial::class);
+    }
 }

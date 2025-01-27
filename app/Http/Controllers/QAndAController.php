@@ -20,7 +20,7 @@ class QAndAController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.admin.q_and_a.create');
     }
 
     /**
@@ -34,17 +34,17 @@ class QAndAController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Q_and_A $q_and_A)
+    public function show(Q_and_A $q_and_a)
     {
-        //
+       
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Q_and_A $q_and_A)
+    public function edit(Q_and_A $q_and_a)
     {
-        //
+        return view('dashboard.admin.q_and_a.edit', compact('q_and_a'));
     }
 
     /**

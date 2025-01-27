@@ -12,7 +12,7 @@
     @vite('resources/css/navbar-styles.css')
     @stack('styles')
     @stack('scripts')
-    <script type="text/javascript" src="{{asset('js/sidebar.js')}}" defer></script>
+   
 </head>
 <body class="flex h-screen gap-3 bg-secondary-bg">
     @if(Route::is('dashboard.admin'))
@@ -31,15 +31,13 @@
                 @endif
             </nav>  
         </header>
-        
         <x-message_toast />
-        
         <section class="container flex flex-col gap-5">
             @yield('content')
         </section>
-
     </main>
 
+    <script type="text/javascript" src="{{asset('js/sidebar.js')}}"></script>
     <script src="{{asset('js/jquery.min.js')}}"></script>
 </body>
 </html>

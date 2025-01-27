@@ -20,7 +20,7 @@ class HealthConcernController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.admin.symptom.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class HealthConcernController extends Controller
      */
     public function show(HealthConcern $healthConcern)
     {
-        //
+       
     }
 
     /**
@@ -44,7 +44,7 @@ class HealthConcernController extends Controller
      */
     public function edit(HealthConcern $healthConcern)
     {
-        //
+        return view('dashboard.admin.symptom.edit', compact('healthConcern'));
     }
 
     /**

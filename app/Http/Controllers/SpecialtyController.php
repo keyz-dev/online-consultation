@@ -12,7 +12,7 @@ class SpecialtyController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -20,7 +20,7 @@ class SpecialtyController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.admin.specialty.create');
     }
 
     /**
@@ -36,15 +36,15 @@ class SpecialtyController extends Controller
      */
     public function show(Specialty $specialty)
     {
-        //
+        
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Specialty $specialty)
     {
-        //
+        return view('dashboard.admin.specialty.edit', compact('specialty'));
     }
 
     /**
