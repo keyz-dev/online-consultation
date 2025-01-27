@@ -1,3 +1,9 @@
-<div>
-    <!-- I begin to speak only when I am certain what I will say is not better left unsaid. - Cato the Younger -->
-</div>
+@extends('layout.dashboard')
+
+
+
+@section('content')
+    <div>
+        Q and As Create Page
+    </div>
+@endsection

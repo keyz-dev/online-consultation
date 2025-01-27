@@ -4,6 +4,6 @@
 
 @section('content')
     <div>
-        Consultations
+        Testimonials
     </div>
 @endsection

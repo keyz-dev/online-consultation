@@ -3,11 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HealthConcernController;
 use App\Http\Controllers\QAndAController;
 use App\Http\Controllers\SpecialtyController;
+use App\Http\Controllers\DoctorDashboardController;
+use App\Http\Controllers\PatientDashboardController;
 
 Route::get('/', [HomeController::class,'index'])->name('home.index');
 
@@ -27,11 +29,12 @@ Route::name('dashboard')
 ->group(function () {
     
     // Managing admin routes in the group
-    Route::name('.admin')
+    Route::middleware('admin_auth')
+    ->name('.admin')
     ->prefix('admin')
     ->group(function () {
 
-        Route::controller(DashboardController::class)
+        Route::controller(AdminDashboardController::class)
         ->group(function() {
             Route::get('/', 'index');
             Route::get('/specialties', 'specialties')->name('.specialties');
@@ -44,6 +47,8 @@ Route::name('dashboard')
             Route::get('/q_and_as', 'q_and_as')->name('.q_and_as');
             Route::get('/chats', 'chats')->name('.chats');
             Route::get('/calls', 'calls')->name('.calls');
+            Route::get('/profile', 'profile')->name('.profile');
+            Route::get('/testimonials', 'testimonials')->name('.testimonials');
         });
           
         // Admin specialties routes
@@ -57,8 +62,8 @@ Route::name('dashboard')
         
         // Admin symptoms routes
         Route::controller(HealthConcernController::class)
-        ->name('.symptom.')
-        ->prefix('symptom')
+        ->name('.symptoms.')
+        ->prefix('symptoms')
         ->group(function () {
             Route::get('/create','create')->name('create');
             Route::get('/{symptom}/edit','edit')->name('edit');
@@ -66,12 +71,36 @@ Route::name('dashboard')
         
         // Admin q_and_a routes
         Route::controller(QAndAController::class)
-        ->name('.q_and_a.')
-        ->prefix('q_and_a')
+        ->name('.q_and_as.')
+        ->prefix('q_and_as')
         ->group(function () {
             Route::get('/create','create')->name('create');
             Route::get('/{q_and_a}/edit','edit')->name('edit');
         });
         
+    });
+
+    // Doctor Dashboard routes
+    Route::middleware('doctor_auth')
+    ->name('.doctor')
+    ->prefix('doctor')
+    ->group(function () {
+
+        Route::controller(DoctorDashboardController::class)
+        ->group(function() {
+            Route::get('/', 'index');
+        });
+    });
+
+    // Patient Dashboard routes
+    Route::middleware('patient_auth')
+    ->name('.patient')
+    ->prefix('patient')
+    ->group(function () {
+
+        Route::controller(PatientDashboardController::class)
+        ->group(function() {
+            Route::get('/', 'index');
+        });
     });
 });

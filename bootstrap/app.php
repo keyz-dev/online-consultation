@@ -11,7 +11,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'admin_auth' => App\Http\Middleware\CheckAdmin::class,
+            'doctor_auth' => App\Http\Middleware\CheckDoctor::class,
+            'patient_auth' => App\Http\Middleware\CheckPatient::class,
+
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

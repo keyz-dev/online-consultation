@@ -1,3 +1,9 @@
-<div>
-    <!-- It is quality rather than quantity that matters. - Lucius Annaeus Seneca -->
-</div>
+@extends('layout.dashboard')
+
+
+
+@section('content')
+    <div>
+        Symptoms Create Page
+    </div>
+@endsection

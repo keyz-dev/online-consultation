@@ -1,3 +1,9 @@
-<div>
-    <!-- You must be the change you wish to see in the world. - Mahatma Gandhi -->
-</div>
+@extends('layout.dashboard')
+
+
+
+@section('content')
+    <div>
+        Specialties Create Page
+    </div>
+@endsection

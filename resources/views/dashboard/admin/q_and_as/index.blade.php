@@ -1,3 +1,9 @@
-<div>
-    <!-- The whole future lies in uncertainty: live immediately. - Seneca -->
-</div>
+@extends('layout.dashboard')
+
+
+
+@section('content')
+    <div>
+        Q and As
+    </div>
+@endsection

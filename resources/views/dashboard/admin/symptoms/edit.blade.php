@@ -1,3 +1,6 @@
-<div>
-    <!-- Do what you can, with what you have, where you are. - Theodore Roosevelt -->
-</div>
+@extends('layout.dashboard')
+@section('content')
+    <div>
+        Symptoms Edit Page
+    </div>
+@endsection

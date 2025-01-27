@@ -20,7 +20,7 @@ class SpecialtyController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.specialty.create');
+        return view('dashboard.admin.specialties.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class SpecialtyController extends Controller
      */
     public function edit(Specialty $specialty)
     {
-        return view('dashboard.admin.specialty.edit', compact('specialty'));
+        return view('dashboard.admin.specialties.edit', compact('specialty'));
     }
 
     /**

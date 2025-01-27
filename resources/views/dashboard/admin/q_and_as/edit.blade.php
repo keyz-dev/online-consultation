@@ -1,3 +1,9 @@
-<div>
-    <!-- Happiness is not something readymade. It comes from your own actions. - Dalai Lama -->
-</div>
+@extends('layout.dashboard')
+
+
+
+@section('content')
+    <div>
+        Q and As Edit Page
+    </div>
+@endsection

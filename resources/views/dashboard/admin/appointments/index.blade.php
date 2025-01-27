@@ -4,6 +4,6 @@
 
 @section('content')
     <div>
-        Consultations
+        Appointments
     </div>
 @endsection

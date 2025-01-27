@@ -1,3 +1,9 @@
-<div>
-    <!-- Well begun is half done. - Aristotle -->
-</div>
+@extends('layout.dashboard')
+
+
+
+@section('content')
+    <div>
+        Specialties
+    </div>
+@endsection

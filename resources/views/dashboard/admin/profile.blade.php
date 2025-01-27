@@ -1,9 +1,7 @@
 @extends('layout.dashboard')
 
-
-
 @section('content')
     <div>
-        Consultations
+        Admin Profile
     </div>
 @endsection

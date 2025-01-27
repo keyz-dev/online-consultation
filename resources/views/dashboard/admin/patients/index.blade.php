@@ -1,3 +1,9 @@
-<div>
-    <!-- Order your soul. Reduce your wants. - Augustine -->
-</div>
+@extends('layout.dashboard')
+
+
+
+@section('content')
+    <div>
+        Patients
+    </div>
+@endsection

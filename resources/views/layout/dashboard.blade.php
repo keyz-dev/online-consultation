@@ -15,11 +15,11 @@
    
 </head>
 <body class="flex h-screen gap-3 bg-secondary-bg">
-    @if(Route::is('dashboard.admin'))
+    @if(Route::is('dashboard.admin*'))
         <x-dashboard.admin_sidebar :logo="$logo" />
-    @elseif(Route::is('dashboard.doctor'))
+    @elseif(Route::is('dashboard.doctor*'))
         <x-dashboard.doctor_sidebar :logo="$logo" />
-    @elseif(Route::is('dashboard.patient'))
+    @elseif(Route::is('dashboard.patient*'))
         <x-dashboard.patient_sidebar :logo="$logo" />   
     @endif
     

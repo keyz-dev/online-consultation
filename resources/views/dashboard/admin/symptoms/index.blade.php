@@ -1,3 +1,9 @@
-<div>
-    <!-- When there is no desire, all things are at peace. - Laozi -->
-</div>
+@extends('layout.dashboard')
+
+
+
+@section('content')
+    <div>
+        Symptoms
+    </div>
+@endsection
