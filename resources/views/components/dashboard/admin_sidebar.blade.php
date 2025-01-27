@@ -1,14 +1,6 @@
-<aside id="sidebar" class="sticky overflow-auto h-100vh top-0 bg-white"> 
+<aside id="sidebar" class="sticky overflow-auto h-100vh top-0 bg-white rounded-r-lg"> 
     <ul>
-        <li>
-            <a href="{{route('dashboard.admin')}}" class="">
-                <x-logo :logo="$logo" />
-            </a>
-            <button onclick=toggleSideBar() id="toggle-btn">
-                {!! file_get_contents(public_path('icons/keyboard_double_arrow_left.svg')) !!}
-            </button>
-        </li>
-        
+        <h2 class="text-lg py-2 text-secondary">Main</h2>
         <x-dashboard.sidebar_list
             route='dashboard.admin'
             title='Dashboard'
@@ -75,7 +67,13 @@
         <x-dashboard.sidebar_list
             route='dashboard.admin.chats'
             title='Chats'
-            svg='checklist'
+            svg='chats'
+        />
+
+        <x-dashboard.sidebar_list
+            route='dashboard.admin.calls'
+            title='Calls'
+            svg='phone'
         />
 
         @php
@@ -86,7 +84,7 @@
             ]
         @endphp
         <x-dashboard.sidebar_btn
-            title='Common Symptoms'
+            title='Health Symptoms'
             svg='cognition'
             :anchors="$anchors"
         />
