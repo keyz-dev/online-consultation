@@ -57,25 +57,34 @@ Route::name('dashboard')
         ->prefix('specialty')
         ->group(function () {
             Route::get('/create','create')->name('create');
-            Route::get('/{specialty}/edit','edit')->name('edit');
+            Route::post('/create','store')->name('create');
+            Route::get('/{specialty}/edit','edit')->name('edit');   
+            Route::get('/{specialty}/delete','destroy')->name('delete');   
+            Route::patch('/{specialty}','update')->name('update');
         });
         
         // Admin symptoms routes
         Route::controller(HealthConcernController::class)
-        ->name('.symptoms.')
-        ->prefix('symptoms')
+        ->name('.symptom.')
+        ->prefix('symptom')
         ->group(function () {
             Route::get('/create','create')->name('create');
-            Route::get('/{symptom}/edit','edit')->name('edit');
+            Route::post('/create','store')->name('create');
+            Route::get('/{symptom}/edit','edit')->name('edit');   
+            Route::get('/{symptom}/delete','destroy')->name('delete');   
+            Route::patch('/{symptom}','update')->name('update');
         });
         
         // Admin q_and_a routes
         Route::controller(QAndAController::class)
-        ->name('.q_and_as.')
-        ->prefix('q_and_as')
+        ->name('.q_and_a.')
+        ->prefix('q_and_a')
         ->group(function () {
             Route::get('/create','create')->name('create');
-            Route::get('/{q_and_a}/edit','edit')->name('edit');
+            Route::post('/create','store')->name('create');
+            Route::get('/{q_and_a}/edit','edit')->name('edit');   
+            Route::get('/{q_and_a}/delete','destroy')->name('delete');   
+            Route::patch('/{q_and_a}','update')->name('update');
         });
         
     });

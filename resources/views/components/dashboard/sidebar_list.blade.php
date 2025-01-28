@@ -1,4 +1,4 @@
-<li class = "{{Route::is($route) ? 'active' : ''}}" title="{{$title}}">
+<li class="{{Route::is($route) ? 'active' : ''}}" title="{{$title}}">
     <a href="{{route($route)}}">
         @if (isset($svg))
             @php

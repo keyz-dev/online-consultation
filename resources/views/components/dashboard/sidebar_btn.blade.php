@@ -1,7 +1,7 @@
 {{-- The dropdown btns for the sidebar --}}
 
 <li title="{{$title}}">
-    <button class="dropdown-btn" onclick="toggleSubMenu(this)">
+    <button class="dropdown-btn {{Route::is($route) ? 'bg-[#cdd6fb6d]' : ''}}" onclick="toggleSubMenu(this)">
         {{-- First icon --}}
         @if (isset($svg))
             @php

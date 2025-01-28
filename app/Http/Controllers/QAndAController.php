@@ -20,7 +20,7 @@ class QAndAController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.q_and_a.create');
+        return view('dashboard.admin.q_and_as.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class QAndAController extends Controller
      */
     public function edit(Q_and_A $q_and_a)
     {
-        return view('dashboard.admin.q_and_a.edit', compact('q_and_a'));
+        return view('dashboard.admin.q_and_as.edit', compact('q_and_a'));
     }
 
     /**

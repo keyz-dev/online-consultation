@@ -9,8 +9,7 @@ class HealthConcern extends Model
     protected $table = "health_concerns";
     protected $fillable = [
         'name',
-        'description',
         'icon_url',
-        'speciality_id'
+        'specialty_id'
     ];
 }   

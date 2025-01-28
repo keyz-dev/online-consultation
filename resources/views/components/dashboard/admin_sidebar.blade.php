@@ -29,13 +29,13 @@
             $anchors = [
                 'All' => 'dashboard.admin.specialties',
                 'Create' => 'dashboard.admin.specialty.create',
-                'Edit' => 'dashboard.admin.specialty.create'
             ]
         @endphp
 
         <x-dashboard.sidebar_btn
             title='Specialites'
             svg='category'
+            route='dashboard.admin.specialties*'
             :anchors="$anchors"
         />
 
@@ -49,12 +49,12 @@
             $anchors = [
                 'All' => 'dashboard.admin.q_and_as',
                 'Create' => 'dashboard.admin.q_and_as.create',
-                'Edit' => 'dashboard.admin.q_and_as.create'
             ]
         @endphp
          <x-dashboard.sidebar_btn
             title='Q and As'
             svg='help'
+            route='dashboard.admin.q_and_as*'
             :anchors="$anchors"
         />
 
@@ -79,13 +79,13 @@
         @php
             $anchors = [
                 'All' => 'dashboard.admin.symptoms',
-                'Create' => 'dashboard.admin.symptoms.create',
-                'Edit' => 'dashboard.admin.symptoms.create'
+                'Create' => 'dashboard.admin.symptom.create',
             ]
         @endphp
         <x-dashboard.sidebar_btn
             title='Health Symptoms'
             svg='cognition'
+            route='dashboard.admin.symptom*'
             :anchors="$anchors"
         />
 
