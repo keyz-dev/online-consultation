@@ -12,8 +12,9 @@
     @vite('resources/css/navbar-styles.css')
     @stack('styles')
     @stack('scripts')
-    <script type="text/javascript" src="{{asset('js/sidebar.js')}}" defer></script>
+   
 </head>
+<<<<<<< HEAD
 <body class="flex h-screen gap-3"> {{-- bg-secondary-bg --}}
     @if(Route::is('dashboard.admin'))
         <x-dashboard.admin_sidebar :logo="$logo" />
@@ -37,9 +38,29 @@
         <section class="container flex flex-col gap-5">
             @yield('content')
         </section>
+=======
+<body class=" flex flex-col h-screen gap-3 bg-secondary-bg">
+   <x-dashboard.header />
+>>>>>>> e101816f36ab3c95a04e38f54406a0e2d5a572ab
 
-    </main>
+    <section class="flex gap-4">
+        @if(Route::is('dashboard.admin*'))
+            <x-dashboard.admin_sidebar :logo="$logo" />
+        @elseif(Route::is('dashboard.doctor*'))
+            <x-dashboard.doctor_sidebar :logo="$logo" />
+        @elseif(Route::is('dashboard.patient*'))
+            <x-dashboard.patient_sidebar :logo="$logo" />   
+        @endif
+        
+        <main class="w-full h-auto flex flex-col items-center mb-3 px-2">
+            <x-message_toast />
+            <section class="w-full flex flex-col">
+                @yield('content')
+            </section>
+        </main>
+    </section>
 
+    <script type="text/javascript" src="{{asset('js/sidebar.js')}}"></script>
     <script src="{{asset('js/jquery.min.js')}}"></script>
 </body>
 </html>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreSpecialtyRequest;
 use App\Models\Specialty;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class SpecialtyController extends Controller
@@ -12,7 +14,7 @@ class SpecialtyController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -20,15 +22,33 @@ class SpecialtyController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.admin.specialties.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreSpecialtyRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $svg_name = strtolower($validated['name']) . '.svg';
+        $svg_content = $validated['icon_url'];
+        
+        // save the svg to the storage disc public folder
+        Storage::disk('public')->put('specialty_icons/'.$svg_name, $svg_content);
+
+        Specialty::create([
+            'name' => $validated['name'],
+            'icon_url' => $svg_name,
+            'description' => $validated['description']
+        ]);
+
+        session([
+            'status' => 'success',
+            "message"=>"Specialty added successfully!"
+        ]);
+
+        return redirect()->route('dashboard.admin.specialties');
     }
 
     /**
@@ -36,23 +56,43 @@ class SpecialtyController extends Controller
      */
     public function show(Specialty $specialty)
     {
-        //
+        
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Specialty $specialty)
     {
-        //
+        return view('dashboard.admin.specialties.edit', compact('specialty'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Specialty $specialty)
+    public function update(StoreSpecialtyRequest $request, Specialty $specialty)
     {
-        //
+        $validated = $request->validated();
+        $svg_name = strtolower($validated['name']) . '.svg';
+        $svg_content = $validated['icon_url'];
+        
+        // delete the old svg file
+        Storage::disk('public')->delete('specialty_icons/'.$specialty->icon_url);
+        
+        // save the svg to the storage disc public folder
+        Storage::disk('public')->put('specialty_icons/'.$svg_name, $svg_content);
+
+        $specialty->update([
+            'name' => $validated['name'],
+            'icon_url' => $svg_name,
+            'description' => $validated['description']
+        ]);
+        session([
+            'status' => 'success',
+            "message"=>"Specialty has been successfully updated"
+        ]);
+
+        return redirect()->route('dashboard.admin.specialty.edit', compact('specialty'));
     }
 
     /**
@@ -60,6 +100,14 @@ class SpecialtyController extends Controller
      */
     public function destroy(Specialty $specialty)
     {
-        //
+        Storage::disk('public')->delete('specialty_icons/'.$specialty->icon_url);
+        
+        $specialty->delete();
+        session([
+            'status' => 'success',
+            "message"=>"Specialty has been successfully deleted"
+        ]);
+
+        return redirect()->back();
     }
 }

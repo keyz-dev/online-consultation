@@ -27,5 +27,3 @@ const closeAllSubMenus = () =>{
         ul.previousElementSibling.classList.remove('rotate');
     })
 }
-
-toggleSubMenu(dropDownBtns[0])

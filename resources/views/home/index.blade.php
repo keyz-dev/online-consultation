@@ -11,9 +11,28 @@
 
     {{-- How it works section --}}
     <x-home.steps />
-
     {{-- Specialties section --}}
-    <x-home.specialty />
+    <x-home.specialty 
+        :specialties="$specialties"
+    />
+    {{-- Services Rendered --}}
+    <x-home.services
+        :services="$services"
+    />
+    {{-- symptoms --}}
+    <x-home.symptoms
+        :symptoms="$symptoms"
+    />
+    {{-- Doctors link --}}
+
+    <x-home.doctor_link />
+
+    {{-- Testimonials --}}
+
+    {{-- Q and A --}}
+    <x-home.q_and_as
+        :qs="$q_and_as"
+    />
 
     
 @endsection
