@@ -89,6 +89,12 @@ class UserController extends Controller
             if($user->role == "patient"){
                 return redirect()->route('dashboard.patient');
             }
+<<<<<<< HEAD
+
+            // return redirect()->route('home.index');
+            // Return the authenticated user info or a redirect 
+=======
+>>>>>>> e101816f36ab3c95a04e38f54406a0e2d5a572ab
         } else{
             return back()->withErrors(['password' => 'Incorrect Email or Password.']);
         }
