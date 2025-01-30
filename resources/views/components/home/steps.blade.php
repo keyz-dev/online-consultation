@@ -1,5 +1,5 @@
 
-<section class="container w-full flex flex-col gap-8 justify-center items-center">
+<section class="container py-10 w-full flex flex-col gap-8 justify-center items-center">
     <x-home.sub_heading text="How It Works" />
 
     <div class="flex flex-col md:flex-row items-center justify-between gap-4">

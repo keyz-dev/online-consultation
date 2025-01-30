@@ -72,7 +72,6 @@
                     <th class="text-secondary text-[14px] font-medium min-w-[150px]">Spec ID</th>
                     <th class="text-secondary text-[14px] font-medium min-w-[150px]">Description</th>
                     <th class="text-secondary text-[14px] font-medium min-w-[150px]">Doctors</th>
-
                     <th class="text-secondary text-[14px] font-medium min-w-[150px]">Action</th>
                 </tr>
                 </thead>
@@ -93,7 +92,7 @@
                                 <p class="text-sm text-secondary truncate max-w-[200px]">{{$specialty->description}}</p>
                             </td>
                             <td class="">
-                                <p></p>
+                                <span>{{$specialty->doctors_count}}</span>
                             </td>
                             
                             <td class="text-xl text-secondary">

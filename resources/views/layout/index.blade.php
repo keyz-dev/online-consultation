@@ -19,7 +19,7 @@
 <body class="bg-white pt-[200px] md:pt-[150px]">   
     <x-navbar :logo="$logo"/>
 
-    <main class="w-full h-auto flex flex-col items-center gap-16 p-0 lg:p-0 mb-3">
+    <main class="w-full h-auto flex flex-col items-center p-0">
         @yield('content')
     </main>
     

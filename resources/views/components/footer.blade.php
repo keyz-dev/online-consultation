@@ -10,7 +10,7 @@
 </style>
 
 <footer class="w-screen bg-footer opacity-95  py-3">
-    <div class="container footer flex flex-col py-4 pt-0 md:p-0 gap-5 h-full">
+    <div class="container footer flex flex-col py-4 pt-5 md:px-0 gap-5 h-full">
         
         <section class="grid container grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 ">
             <div>

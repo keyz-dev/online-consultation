@@ -23,7 +23,7 @@ class AdminDashboardController extends Controller
         return view('dashboard.admin.doctors.index', compact('doctors'));
     }
     public function specialties(){
-        $specialties = Specialty::all();
+        $specialties = Specialty::withCount('doctors')->get();
         return view('dashboard.admin.specialties.index', compact('specialties'));
     }
     public function patients(){

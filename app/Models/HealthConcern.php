@@ -12,4 +12,8 @@ class HealthConcern extends Model
         'icon_url',
         'specialty_id'
     ];
+
+    public function specialty(){
+        return $this->belongsTo(Specialty::class);
+    }
 }   

@@ -94,7 +94,6 @@ Route::name('dashboard')
     ->name('.doctor')
     ->prefix('doctor')
     ->group(function () {
-
         Route::controller(DoctorDashboardController::class)
         ->group(function() {
             Route::get('/', 'index');

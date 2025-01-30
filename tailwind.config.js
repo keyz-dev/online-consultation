@@ -30,7 +30,7 @@ export default {
                 },
                 primary:{
                     DEFAULT: '#212121',
-                    bg: '#FFF4EE'
+                    bg: '#f4eeeb'
                 },
                 secondary:{
                     DEFAULT: '#6A6A6A',

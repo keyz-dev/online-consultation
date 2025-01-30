@@ -83,7 +83,7 @@
                                 <span>{{$symptom->id}}</span>
                             </td>
                             <td class="">
-                                <p>{{$symptom->specialty_id}}</p>
+                                <p>{{$symptom->specialty->name}}</p>
                             </td>
                             
                             <td class="text-xl text-secondary">

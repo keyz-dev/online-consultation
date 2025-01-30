@@ -24,3 +24,12 @@ html{
         @apply bg-accent text-white hover:opacity-75 border border-border_clr;
     }
 }
+
+@layer utilities{
+    .flexible{
+        @apply flex items-center gap-3;
+    }
+    .default_transition{
+        @apply transition-all duration-300 ease-in-out;
+    }
+}

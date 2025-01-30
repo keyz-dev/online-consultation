@@ -48,7 +48,7 @@
         @php
             $anchors = [
                 'All' => 'dashboard.admin.q_and_as',
-                'Create' => 'dashboard.admin.q_and_as.create',
+                'Create' => 'dashboard.admin.q_and_a.create',
             ]
         @endphp
          <x-dashboard.sidebar_btn
