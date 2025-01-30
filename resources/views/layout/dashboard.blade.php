@@ -14,7 +14,7 @@
     @stack('scripts')
     <script type="text/javascript" src="{{asset('js/sidebar.js')}}" defer></script>
 </head>
-<body class="flex h-screen gap-3 bg-secondary-bg">
+<body class="flex h-screen gap-3"> {{-- bg-secondary-bg --}}
     @if(Route::is('dashboard.admin'))
         <x-dashboard.admin_sidebar :logo="$logo" />
     @elseif(Route::is('dashboard.doctor'))
@@ -24,10 +24,10 @@
     @endif
     
     <main class="w-full h-auto flex flex-col items-center gap-5 p-2 pt-0 lg:p-0 mb-3">
-        <header class="container flex w-full justify-end pt-4">
+        <header class="container flex w-full justify-end pt-4"> <!-- I have removed the container class -->
             <nav class="">
                 @if(Auth::check())
-                <x-profile_info />
+                  <x-profile_info />
                 @endif
             </nav>  
         </header>

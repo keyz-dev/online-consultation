@@ -23,7 +23,7 @@
             icon="<i class='fas fa-bars'></i>"
             class="text-xl md:hidden z-10 min-w-fit min-h-fit" 
         />
-        <a href="{{route("home.index")}}" class="z-10 text-xl font-bold ">
+        <a href="{{route('home.index')}}" class="z-10 text-xl font-bold ">
             <x-logo :logo="$logo" />
         </a>
 
