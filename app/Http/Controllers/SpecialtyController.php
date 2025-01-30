@@ -14,7 +14,7 @@ class SpecialtyController extends Controller
      */
     public function index()
     {
-        
+        return view("home.specialty.index");
     }
 
     /**

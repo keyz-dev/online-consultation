@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{asset('images/favicon.png')}}" type="image/x-icon">
-    <title>@yield('title', 'Admin Dashboard')</title>
+    <title>@yield('title', 'Dashboard')</title>
     <link rel="stylesheet" href="{{asset('font/css/all.css')}}">
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
     @vite('resources/css/app.css')
@@ -26,7 +26,7 @@
             <x-dashboard.patient_sidebar :logo="$logo" />   
         @endif
         
-        <main class="w-full h-auto flex flex-col items-center mb-3 px-2">
+        <main class="w-full flex flex-col items-center mb-3 px-2 h-[300vh]">
             <x-message_toast />
             <section class="w-full flex flex-col">
                 @yield('content')

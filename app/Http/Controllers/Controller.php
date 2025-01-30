@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 
 abstract class Controller
 {
@@ -15,5 +16,21 @@ abstract class Controller
         } else {
             return back()->withErrors([$field => 'Failed to upload profile image.']);
         }
+    }
+
+    protected function extract_user($validated){
+        $mass_user = collect($validated)->only([
+            'name',
+            'password',
+            'gender',
+            'age',
+            'dob',
+            'Nationality',
+            'city',
+            'profile_image'
+        ]);
+        $mass_user['password'] = Hash::make($mass_user['password']);
+    
+        return $mass_user->toArray();
     }
 }

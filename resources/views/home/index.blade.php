@@ -33,6 +33,4 @@
     <x-home.q_and_as
         :qs="$q_and_as"
     />
-
-    
 @endsection

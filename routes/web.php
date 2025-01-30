@@ -112,3 +112,17 @@ Route::name('dashboard')
         });
     });
 });
+
+// Doctor Page handling routes
+Route::controller(DoctorController::class)
+->group(function (){
+    Route::get('/doctors', 'index')->name('home.doctors');
+    
+    Route::name('doctor.')
+    ->prefix('doctor')
+    ->group(function () {
+        Route::get('/register', 'create')->name('register');
+        Route::post('/register', 'store')->name('create');
+        Route::get('/{doctor}/profile', 'show')->name('show');
+    });
+});

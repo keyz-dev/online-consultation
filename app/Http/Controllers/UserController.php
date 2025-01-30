@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\ContactInformation;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\UserContact;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUserRequest;
@@ -25,45 +27,37 @@ class UserController extends Controller
     }
 
     public function store(StoreUserRequest $request){
-        // extract the validated request parameters
-        $validated = $request->validated();
+        DB::transaction(function () use ($request){
 
-        if(isset($validated['profile_image']) && $validated['profile_image'] != null){
-            $validated['profile_image'] = $this->file_handler($request, 'profile_image', 'profile_images');
-        }
-        $mass_ass = collect($validated)->only([
-            'name',
-            'password',
-            'gender',
-            'age',
-            'dob',
-            'Nationality',
-            'city',
-            'role',
-            'profile_image'
-        ]);
-
-        $mass_ass['password'] = Hash::make($mass_ass['password']);
-        $mass_array = $mass_ass->toArray();
-
-        // Create a new user
-        $user = User::create($mass_array);    
-        // Get the list of contacts
-        $contacts = ContactInformation::all();
-
-        foreach($validated as $key => $value ){
-            // get the contact information by name and extract the id, so as to insert into the user_contacts table
-            $contact = $contacts->where('name', $key)->first();
-            if( $contact ){
-                $user->contacts()->attach($contact->id, compact('value'));
+            // extract the validated request parameters
+            $validated = $request->validated();
+    
+            if(isset($validated['profile_image']) && $validated['profile_image'] != null){
+                $validated['profile_image'] = $this->file_handler($request, 'profile_image', 'profile_images');
             }
-        }
-        session([
-            'status' => 'success',
-            "message"=>"User created successfully!"
-        ]);
-
-        return redirect()->route('user.login');
+            if(isset($request['document']) && $request['document'] != null){
+                $validated['document'] = $this->file_handler($request, 'document', 'documents');
+            }
+            $mass_array = $this->extract_user($validated);
+    
+            // Create a new user
+            $user = User::create($mass_array);    
+            // Get the list of contacts
+            $contacts = ContactInformation::all();
+    
+            foreach($validated as $key => $value ){
+                // get the contact information by name and extract the id, so as to insert into the user_contacts table
+                $contact = $contacts->where('name', $key)->first();
+                if( $contact ){
+                    $user->contacts()->attach($contact->id, compact('value'));
+                }
+            }
+            session([
+                'status' => 'success',
+                "message"=>"User created successfully!"
+            ]);
+            return redirect()->route('user.login');
+        });
     }
 
     public function login(Request $request){

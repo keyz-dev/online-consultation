@@ -12,7 +12,7 @@ class Doctor extends Model
         'payment_id',
         'experience',
         'rating',
-        'description',
+        'descriptions',
         'license_number',
         'hospital',
         'consultation_fee'            
