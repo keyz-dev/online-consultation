@@ -12,7 +12,6 @@
     </style>
 @endpush
 
-
 <section class="w-full flex flex-col gap-2">
     <x-dashboard.page_url 
         page="Specialties"
@@ -42,7 +41,8 @@
                 <x-search 
                     name="specialty_search"
                     placeholder="Search Specialties"
-                    class="border-none outline-none min-w-[320px] placeholder:text-slate-400 placeholder:text-sm"
+                    class=""
+                    iclass="border-none outline-none min-w-[320px] placeholder:text-slate-400 placeholder:text-sm"
                 />
             </div>
 

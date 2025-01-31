@@ -24,6 +24,8 @@ Route::controller(UserController::class)
     Route::post('/logout',  'logout')->name('logout');
 });
 
+
+// Grouped Dashboard Routes
 Route::name('dashboard')
 ->prefix('dashboard')
 ->group(function () {

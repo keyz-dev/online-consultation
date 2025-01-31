@@ -8,6 +8,7 @@
     <title>@yield('title', 'DrogCine')</title>
     <link rel="stylesheet" href="{{asset('font/css/all.css')}}">
     <link rel="stylesheet" href="{{asset('font/recoleta/style.css')}}">
+    <link rel="stylesheet" href="{{asset('font/sofia-pro-webfont/style.css')}}">
 
     @vite('resources/css/app.css')
     @vite('resources/css/navbar-styles.css')

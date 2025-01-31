@@ -14,34 +14,8 @@
     @stack('scripts')
    
 </head>
-<<<<<<< HEAD
-<body class="flex h-screen gap-3"> {{-- bg-secondary-bg --}}
-    @if(Route::is('dashboard.admin'))
-        <x-dashboard.admin_sidebar :logo="$logo" />
-    @elseif(Route::is('dashboard.doctor'))
-        <x-dashboard.doctor_sidebar :logo="$logo" />
-    @elseif(Route::is('dashboard.patient'))
-        <x-dashboard.patient_sidebar :logo="$logo" />   
-    @endif
-    
-    <main class="w-full h-auto flex flex-col items-center gap-5 p-2 pt-0 lg:p-0 mb-3">
-        <header class="container flex w-full justify-end pt-4"> <!-- I have removed the container class -->
-            <nav class="">
-                @if(Auth::check())
-                  <x-profile_info />
-                @endif
-            </nav>  
-        </header>
-        
-        <x-message_toast />
-        
-        <section class="container flex flex-col gap-5">
-            @yield('content')
-        </section>
-=======
 <body class=" flex flex-col h-screen gap-3 bg-secondary-bg">
    <x-dashboard.header />
->>>>>>> e101816f36ab3c95a04e38f54406a0e2d5a572ab
 
     <section class="flex gap-4">
         @if(Route::is('dashboard.admin*'))
@@ -52,7 +26,7 @@
             <x-dashboard.patient_sidebar :logo="$logo" />   
         @endif
         
-        <main class="w-full flex flex-col items-center mb-3 px-2 h-[300vh]">
+        <main class="w-full flex flex-col items-center mb-3 px-2 h-auto">
             <x-message_toast />
             <section class="w-full flex flex-col">
                 @yield('content')

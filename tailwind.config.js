@@ -21,8 +21,7 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 custom: ['Sofia Pro Light', 'Euclid Circula A'],
-                hero: ['Recoleta', 'Sofia Pro Light', 'Euclid Circula'],
-                rufus: ["'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"]
+                hero: ['Recoleta', 'Sofia Pro Light', 'Euclid Circula']
             },
             colors:{
                 accent: {

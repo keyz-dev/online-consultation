@@ -18,12 +18,17 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        return view("home.doctor.index");
+        // Initial rendering with all the doctors
+        $doctors = Doctor::all();
+        return $this->render($doctors);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Display the page since the search has to work on it
+    public function render($doctors){
+        $bg = asset('images/bg4.jpg');
+        $specialties = Specialty::all();
+        return view("home.doctor.index", compact('bg', 'doctors', 'specialties'));
+    }
 
     public function create()
     {

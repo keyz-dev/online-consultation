@@ -14,9 +14,6 @@ use App\Http\Requests\StoreUserRequest;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return view("user.login");
@@ -28,7 +25,6 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request){
         DB::transaction(function () use ($request){
-
             // extract the validated request parameters
             $validated = $request->validated();
     
@@ -79,7 +75,6 @@ class UserController extends Controller
             if (session()->has('appointment_request')){
                 // redirect to the booking appointment page
             }
-
             if($user->role == "admin"){
                 return redirect()->route('dashboard.admin');
             }
@@ -89,12 +84,6 @@ class UserController extends Controller
             if($user->role == "patient"){
                 return redirect()->route('dashboard.patient');
             }
-<<<<<<< HEAD
-
-            // return redirect()->route('home.index');
-            // Return the authenticated user info or a redirect 
-=======
->>>>>>> e101816f36ab3c95a04e38f54406a0e2d5a572ab
         } else{
             return back()->withErrors(['password' => 'Incorrect Email or Password.']);
         }

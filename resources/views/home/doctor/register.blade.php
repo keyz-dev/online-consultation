@@ -22,7 +22,7 @@
 
 @section('content')
 <section class="container">
-    <form action="{{route("doctor.register")}}" method="POST" class="mx-auto w-full md:min-w-[50%] md:max-w-[90%] lg:max-w-[90%] flex items-center sm:items-start sm:flex-row justify-center h-auto gap-4 md:px-9 md:py-4" enctype="multipart/form-data">
+    <form action="{{route("doctor.register")}}" method="POST" class="mx-auto w-full md:min-w-[50%] md:max-w-[90%] lg:max-w-[90%] flex items-center sm:items-start sm:flex-row justify-center h-auto gap-4 md:px-9 py-3 md:py-4" enctype="multipart/form-data">
         @csrf
         <div class="flex w-full md:w-[450px] flex-col gap-4 items-center">
             <h1 class="text-xl font-semibold">Become Our Doctor</h1>
@@ -69,7 +69,8 @@
                                 </select>
                             </div>
                         </div>
-            
+                        
+                        {{-- Gender and DOB --}}
                         <div class="flex flex-col sm:flex-row gap-8 w-full items-center justify-between">
                             <x-input type="date" name="dob" max="{{ date('Y-m-d') }}" label="Date of Birth" required/>
                             <div class="w-full flex flex-col">
@@ -139,7 +140,7 @@
                         
                         {{-- primary contact information  and image divisibility --}}
                         <div class="flex flex-col sm:flex-row gap-8 w-full items-center justify-between">
-                            <div class="flex flex-col gap-2 w-full items-center justify-between">
+                            <div class="flex flex-col gap-4 sm:gap-3 w-full items-center justify-between">
                                 <x-input type="number" name="phone" label="Phone" placeholder="Enter your phone number" required/>
                                 <x-input type="number" name="whatsapp" label="Whatsapp" placeholder="Enter your whatsapp number" required/>
                                 
@@ -147,18 +148,11 @@
                             </div>
                             
                             {{-- profile image uploader --}}
-                            <div class="h-full w-full flex items-center justify-center">
-                                <label for="input-file" id="drop-area" class="w-full h-full flex items-center justify-center flex-col">  
-                                    <input type="file" accept="image/*" name="profile_image" id="input-file" hidden>
-                                    <div class="border h-full flex flex-col gap-2 items-center justify-center w-full border-2-dashed border-border_clr bg-pending-bg rounded-sm bg-no-repeat bg-cover bg-center" id="img-view">
-                                        <i class="fas fa-cloud-upload text-accent text-3xl font-semibold"></i>
-                                        <p class="text-center text-sm text-secondary">Drop or click here <br/> to upload image</p>
-                                    </div>
-                                    @error('profile_image')
-                                    <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
-                                    @enderror
-                                </label>
-                            </div>
+                            <x-image_uploader 
+                                name="profile_image"
+                                class="min-h-[200px] h-full"
+
+                            />
                         </div>
 
                         {{-- facebook url link --}}
@@ -169,7 +163,7 @@
                             <x-input type="password" name="password_confirmation" label="Confirm password" placeholder="confirm your password" required/>
                         </div>
                         
-                        {{-- Bottom buttons --}}
+                        {{-- B-om buttons --}}
                         <div class="flex justify-between w-full items-center my-2">
                             <a href="#form-section-1">
                                 <x-button text="Previous" class="border border-border_clr text-primary bg-secondary-bg hover:bg-opacity-70"/>

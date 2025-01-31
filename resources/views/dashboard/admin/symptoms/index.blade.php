@@ -38,7 +38,8 @@
                 <x-search 
                     name="specialty_search"
                     placeholder="Search Symptoms"
-                    class="border-none outline-none min-w-[320px] placeholder:text-slate-400 placeholder:text-sm"
+                    class=""
+                    iclass="border-none outline-none min-w-[320px] placeholder:text-slate-400 placeholder:text-sm"
                 />
             </div>
 

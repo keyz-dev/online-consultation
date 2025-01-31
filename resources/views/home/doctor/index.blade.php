@@ -1,3 +1,28 @@
-<div>
-    <!-- When there is no desire, all things are at peace. - Laozi -->
-</div>
+@extends('layout.index')
+@section('title', 'Home')
+
+@section('content')
+    <x-home.hero_section 
+        route="Doctors"
+        text="Our Medical Crew"
+        :bg="$bg"
+    />
+    
+    <main class="w-full">
+        <x-doctor.search_section 
+            :specialties="$specialties"
+        />
+
+        {{-- Doctors display section --}}
+        <section class="container py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+            @forelse ($doctors as $doctor)
+                <x-doctor.doctor_card 
+                    :doctor="$doctor"
+                />
+            @empty
+                <div class="w-full col-span-5 h-[100px] flex items-center justify-center text-secondary">
+                    There are no Registered Doctors yet                </div>
+            @endforelse
+        </section>
+    </main>
+@endsection
