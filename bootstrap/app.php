@@ -15,7 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin_auth' => App\Http\Middleware\CheckAdmin::class,
             'doctor_auth' => App\Http\Middleware\CheckDoctor::class,
             'patient_auth' => App\Http\Middleware\CheckPatient::class,
-
+            'check_specialty' => App\Http\Middleware\CheckSpecialty::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

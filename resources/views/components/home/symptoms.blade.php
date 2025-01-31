@@ -1,4 +1,4 @@
-<section class="w-screen bg-secondary-bg">
+<section class="w-screen bg-secondary-bg" id="symptoms">
     <section class="container py-10 flexible flex-col">
         <x-home.sub_heading 
             text="Common Symptoms" 

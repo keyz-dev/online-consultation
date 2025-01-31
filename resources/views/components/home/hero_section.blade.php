@@ -13,7 +13,7 @@
        {{-- Create the main container --}}
         <div class="container w-full h-full flex flex-col items-center justify-center gap-8 sm:gap-10">
             {{-- title --}}
-            <h2 class="text-[48px] tracking-[5px] font-semibold font-hero">{{$text}}</h2>
+            <h2 class="text-[32px] sm:text-[40px] md:text-[48px] tracking-[5px] font-semibold font-hero">{{$text}}</h2>
             
             {{-- Route indicator --}}
             <div class="flex items-center justify-center gap-2 text-sm">

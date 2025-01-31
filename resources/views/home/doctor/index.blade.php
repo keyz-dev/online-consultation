@@ -14,7 +14,7 @@
         />
 
         {{-- Doctors display section --}}
-        <section class="container py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+        <section class="container py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4  gap-6">
             @forelse ($doctors as $doctor)
                 <x-doctor.doctor_card 
                     :doctor="$doctor"
@@ -26,3 +26,8 @@
         </section>
     </main>
 @endsection
+
+{{-- Script for handling the search from algo --}}
+@push('scripts')
+    <script type="text/javascript" src="{{asset('js/doctor/search.js')}}" defer></script>
+@endpush

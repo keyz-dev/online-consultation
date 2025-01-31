@@ -7,20 +7,19 @@
 
     {{-- How it works section --}}
     <x-home.steps />
-    {{-- Specialties section --}}
-    <x-home.specialty 
-        :specialties="$specialties"
+    {{-- symptoms --}}
+    <x-home.symptoms
+        :symptoms="$symptoms"
     />
     {{-- Services Rendered --}}
     <x-home.services
         :services="$services"
     />
-    {{-- symptoms --}}
-    <x-home.symptoms
-        :symptoms="$symptoms"
+    {{-- Specialties section --}}
+    <x-home.specialty 
+        :specialties="$specialties"
     />
     {{-- Doctors link --}}
-
     <x-home.doctor_link />
 
     {{-- Testimonials --}}

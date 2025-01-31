@@ -1,4 +1,4 @@
-<section class="w-screen bg-slate-100">
+<section class="w-screen bg-slate-100" if="specialties">
     <section class="container py-10 flexible flex-col gap-5">
         <x-home.sub_heading text="Our Specialties" />
         <p class="text-center text-secondary text-sm md:w-[40%]">
@@ -10,7 +10,7 @@
             <h2 class="text-lg font-medium">
                 Topping Specialties
             </h2>
-            <a href="" class="flex items-center gap-1 border border-line_clr">
+            <a href="{{route('home.specialties')}}" class="flex items-center gap-1 border border-line_clr">
                 <x-button 
                     text="VIEW MORE"
                     class="text-[12px] font-semibold text-secondary px-4 py-2 min-w-fit min-h-fit hover:bg-accent hover:text-white"
@@ -24,7 +24,7 @@
         <section class="w-full grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             @forelse ($specialties as $specialty)
             {{-- clicking on a card should automatically send a search query for doctors with that specialty, and then redirect to the doctors page  --}}
-                <x-home.specialty_card
+                <x-specialty.specialty_card
                     :specialty="$specialty"
                     description="hide"
                 />

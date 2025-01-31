@@ -29,7 +29,6 @@ Route::controller(UserController::class)
 Route::name('dashboard')
 ->prefix('dashboard')
 ->group(function () {
-    
     // Managing admin routes in the group
     Route::middleware('admin_auth')
     ->name('.admin')
@@ -126,5 +125,24 @@ Route::controller(DoctorController::class)
         Route::get('/register', 'create')->name('register');
         Route::post('/register', 'store')->name('create');
         Route::get('/{doctor}/profile', 'show')->name('show');
+
+        // Doctor search routes based on specialty
+        Route::get('/specialty/{specialty}','get_by_specialty')->name('get_by_specialty');
+        
+        // Add a middleware to check the value of the specialty
+    });
+});
+
+Route::post('doctor/specialty', [DoctorController::class, 'get_specialty'])->name('doctor.get_specialty');
+
+// Specialty Page handling routes
+Route::controller(SpecialtyController::class)
+->group(function (){
+    Route::get('/specialties', 'index')->name('home.specialties');
+    
+    Route::name('specialty.')
+    ->prefix('specialty')
+    ->group(function () {
+        Route::get('/{specialty}/profile', 'show')->name('show');
     });
 });

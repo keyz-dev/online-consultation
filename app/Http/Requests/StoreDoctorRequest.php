@@ -25,7 +25,7 @@ class StoreDoctorRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'password' => 'required|confirmed|min:5',
-            'profile_image' => 'nullable|image|mimes:jpg,png,jpeg,webp,ico,svg,jiff,avif|max:2048',
+            'profile_image' => 'required|image|mimes:jpg,png,jpeg,webp,ico,svg,jiff,avif|max:2048',
             'phone' => 'required|min:9',
             'whatsapp' => 'min:9',
             'Nationality' => 'required',
@@ -39,8 +39,8 @@ class StoreDoctorRequest extends FormRequest
             'hospital' => 'required|string',
             'payment_number' => 'required|integer',
             'payment_type' => 'required|string',
-            'facebook' => 'string',
-            'telegram' => 'string',
+            'facebook' => 'nullable|string',
+            'telegram' => 'nullable|string',
             'descriptions' => 'string',
         ];
     }

@@ -30,6 +30,16 @@ class DoctorController extends Controller
         return view("home.doctor.index", compact('bg', 'doctors', 'specialties'));
     }
 
+    // function to return the doctors based on the specialty
+    public function get_by_specialty(Specialty $specialty){
+        $doctors = Doctor::where('specialty_id', $specialty->id)->get();
+        return $this->render($doctors);
+    }
+
+    public function get_specialty(Request $request){
+        dd($request->all());
+    }
+
     public function create()
     {
         $specialties = Specialty::all();

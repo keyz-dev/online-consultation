@@ -1,25 +1,39 @@
 
 <style>
-    .search_form svg{
-        fill: rgb(102, 100, 100);
+    .search_form svg, .filter_form button svg{
+        fill: rgb(95, 94, 94);
+    }
+    .filter-form{
+        border: 1px solid #2567c9;
+        border-radius: 8px;
+        padding: 8px 16px;
+        margin-left: 16px;
     }
 </style>
 <div class="container py-4 flexible justify-between">
-    <form action="" method="POST">
+    <form action="{{route('doctor.get_specialty')}}" method="POST" class="flexible">
         <div class="w-full flexible">
             <label for="specialty">Specialties</label>
             <select class="border-2 border-border_clr outline-none p-2 focus:border-accent transition-all ease-in-out duration-600" name="specialty_id" id="specialty">
                 <option value="all" selected>All</option>
                 @foreach ($specialties as $specialty)
-                    <option value="{{$specialty->id}}">{{$specialty->name}}</option>
+                    <option value="{{$specialty}}">{{$specialty->name}}</option>
                 @endforeach
             </select>
+            @php
+                $filter_icon = file_get_contents(public_path('icons/filter.svg'))
+            @endphp
         </div>
+        <x-button 
+            text="Filter"
+            type="submit"
+            class="bg-secondary-bg min-h-[40px] rounded-lg min-w-fit"
+        />
     </form>
 
     {{-- The search input --}}
     <form class="search_form" action="" method="POST">
-        {{-- iclass is for the input within the container --}}
+        {{-- iclass is for the input within the --}}
         <x-search 
             name="doctor_search"
             placeholder="Search for a doctor"
