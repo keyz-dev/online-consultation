@@ -124,5 +124,6 @@ Route::controller(DoctorController::class)
         Route::get('/register', 'create')->name('register');
         Route::post('/register', 'store')->name('create');
         Route::get('/{doctor}/profile', 'show')->name('show');
+        Route::get('/availability', 'availabilityPage')->name('availabily');
     });
 });

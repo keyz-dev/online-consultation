@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Doctor extends Model
@@ -32,6 +33,19 @@ class Doctor extends Model
 
     public function specialty(){
         return $this->belongsTo(Specialty::class);
+    }
+
+    // This scope filters all the doctors that have alteast one  active availability for the 
+    // current week
+    public static function scopeActiveAvailabilities($query, $week_number = null){
+      return $query->whereHas('availabilities', function($query) use ($week_number){
+        $query->where('status', 'active');
+        if(!is_null($week_number)){
+            $query->where('week_number', $week_number);
+        }else{
+            $query->where('week_number', \Carbon\Carbon::now()->weekOfYear());
+        }
+      });
     }
 
     public function consultations(){

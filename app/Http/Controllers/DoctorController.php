@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDoctorRequest;
+use App\Models\Availability;
 use App\Models\Doctor;
 use App\Models\Specialty;
 use Illuminate\Http\Request;
@@ -38,7 +39,7 @@ class DoctorController extends Controller
     {
         return DB::transaction(function() use ($request) {
             $validated = $request->validated();
-            if(isset($validated['profile_image']) && $validated['profile_image'] != null){
+            if(isset($validated['profile_image']) && $validated['profile_image'] != ""){
                 $validated['profile_image'] = $this->file_handler($request, 'profile_image', 'profile_images');
             }
             // Extract the user fields and set the role and create the user
@@ -115,5 +116,47 @@ class DoctorController extends Controller
     public function destroy(Doctor $doctor)
     {
         //
+    }
+    public function availabilityPage(Request $req){
+       $week_number = $req->input('week_number');
+    //    $activeDoctors = Doctor::scopeActiveAvailabilities("2")->with('user')->get(); 
+    //    dd($activeDoctors);
+    $av = Availability::all();
+    $doc = Doctor::all();
+    $users = User::all();
+    $filters = [];
+    $array = [];
+    $activeDoctors = [];
+    $response = [
+        "name" => "",
+        "city" => "",
+        "nationality" => "",
+        "profile" => "",
+    ];
+    foreach($av as $value){
+      if($value['status'] == 'active'){
+        $filters[] = $value['doctor_id'];
+      }
+    }
+    foreach($doc as $item){
+       foreach($filters as $id){
+         if($id === $item['id']){
+            $array[] = $item['user_id'];
+         }
+       }
+    }
+    foreach($users as $user){
+        foreach($array as $val){
+            if($val === $user['id']){
+              $response['name'] = $user['name'];
+              $response['city'] = $user['city'];
+              $response['nationality'] = $user['Nationality'];
+              $response['profile'] = $user['profile_image'];
+              $activeDoctors[] = $response;
+            }
+        }
+    }
+        // dd($activeDoctors);
+        return view('dashboard.doctor.availability', compact('activeDoctors'));
     }
 }

@@ -9,7 +9,7 @@
 @endpush
 <a href="" class="w-full p-4 flexible flex-col justify-center specialty_cell default_transition border-2 border-transparent hover:border-accent hover:shadow-lg rounded-md">
     {{-- icon --}}
-    {!! file_get_contents(public_path('storage/specialty_icons/'.$specialty->icon_url))!!}
+    {--!! file_get_contents(public_path('storage/specialty_icons/'.$specialty->icon_url))!!--}
     
     <h2 class="text-lg text-center font-semibold text-primary">{{$specialty->name}}</h2>
     @if(isset($description) && $description == "show")

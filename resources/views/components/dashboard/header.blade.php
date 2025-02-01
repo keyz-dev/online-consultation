@@ -5,7 +5,7 @@
     }
 </style>
 
-<header class="flex w-full justify-between px-4 items-center bg-white">
+<header class="flex w-full justify-between px-4 items-center bg-white ">
     <div class="flex gap-3 items-center">
         <a href="{{route('dashboard.admin')}}" class="">
             <x-logo :logo="$logo" />
