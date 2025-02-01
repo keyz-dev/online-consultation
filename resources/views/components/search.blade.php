@@ -4,6 +4,7 @@
         :name="$name" 
         :placeholder="$placeholder" 
         :class="$iclass"
+        required
     />
     <button class="p-2">
         {!! file_get_contents(public_path('icons/search.svg')) !!}

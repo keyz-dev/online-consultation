@@ -86,7 +86,7 @@
                 <a href="https://www.facebook.com/profile.php?id=100089952266984" target="_blank" title="X">
                     <img width="30" height="30" src="https://img.icons8.com/fluency/30/twitterx--v1.png" alt="twitterx--v1"/>
                 </a>
-                <a href=" https://wa.me/237655955186?text=I'm%20interested%20in%20your%20online%20consultation%20service" target="_blank" title="whatsapp">
+                <a href="https://wa.me/237655955186?text=I'm%20interested%20in%20your%20online%20consultation%20service" target="_blank" title="whatsapp">
                     <img width="30" height="30" src="https://img.icons8.com/color/30/whatsapp--v1.png" alt="whatsapp--v1"/>
                 </a>
             </div>

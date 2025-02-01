@@ -15,7 +15,9 @@ class CheckSpecialty
      */
     public function handle(Request $request, Closure $next): Response
     {
-        dd($request->specialty_id);
+        if($request->specialty_id == "all"){
+            return redirect()->route('home.doctors');
+        }
         return $next($request);
     }
 }

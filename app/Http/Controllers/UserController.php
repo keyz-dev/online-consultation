@@ -34,6 +34,7 @@ class UserController extends Controller
             if(isset($request['document']) && $request['document'] != null){
                 $validated['document'] = $this->file_handler($request, 'document', 'documents');
             }
+            
             $mass_array = $this->extract_user($validated);
     
             // Create a new user

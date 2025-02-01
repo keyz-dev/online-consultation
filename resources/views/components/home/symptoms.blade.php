@@ -16,9 +16,19 @@
                 />
             @empty
             <div class="w-full col-span-5 h-[100px] flex items-center justify-center text-secondary">
-                There are no symptoms available
+                No Symptoms Found
             </div>
             @endforelse
         </section>
+        <div class="flex w-full items-center justify-center py-6">
+            <a href="" class="flex items-center gap-1 border border-line_clr">
+                <x-button 
+                    text="VIEW MORE"
+                    class="text-[12px] font-semibold text-secondary px-4 py-2 min-w-fit min-h-fit hover:bg-accent hover:text-white"
+                >
+                    <i class="fas fa-chevron-right"></i>
+                </x-button>
+            </a>
+        </div>
     </section>
 </section>

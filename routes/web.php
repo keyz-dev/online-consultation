@@ -126,14 +126,17 @@ Route::controller(DoctorController::class)
         Route::post('/register', 'store')->name('create');
         Route::get('/{doctor}/profile', 'show')->name('show');
 
+        // Doctor Search Routes
         // Doctor search routes based on specialty
         Route::get('/specialty/{specialty}','get_by_specialty')->name('get_by_specialty');
         
+        // Doctor search routes based on doctor name
+        Route::post('/search','get_by_name')->name('get_by_name');
+        
         // Add a middleware to check the value of the specialty
+        Route::middleware('check_specialty')->post('/specialty', [DoctorController::class, 'get_specialty'])->name('get_specialty');
     });
 });
-
-Route::post('doctor/specialty', [DoctorController::class, 'get_specialty'])->name('doctor.get_specialty');
 
 // Specialty Page handling routes
 Route::controller(SpecialtyController::class)

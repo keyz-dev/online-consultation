@@ -21,7 +21,8 @@
                 />
             @empty
                 <div class="w-full col-span-5 h-[100px] flex items-center justify-center text-secondary">
-                    There are no Registered Doctors yet                </div>
+                    No Doctors Found
+                </div>
             @endforelse
         </section>
     </main>
