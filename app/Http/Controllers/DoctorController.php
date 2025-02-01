@@ -14,17 +14,50 @@ use App\Models\ContactInformation;
 
 class DoctorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public $bg;
     public function index()
     {
-        return view("home.doctor.index");
+        // Initial rendering with all the doctors
+        $doctors = Doctor::all();
+        return $this->render($doctors);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Display the page since the search has to work on it
+    public function render($doctors){
+        $bg = asset('images/bg4.jpg');
+        $this->bg = $bg;
+        $specialties = Specialty::all();
+        return view("home.doctor.index", compact('bg', 'doctors', 'specialties'));
+    }
+
+    // function to return the doctors based on the specialty
+    public function get_by_specialty(Specialty $specialty){
+        $doctors = Doctor::where('specialty_id', $specialty->id)->get();
+        return $this->render($doctors);
+    }
+    
+    public function get_by_name(Request $request){
+        $validated = $request->validate([
+            'doctor_name' => 'required|string'
+        ]);
+        $name = $validated['doctor_name'];
+        // get all users based on the condition
+        $users = User::where('name', 'like', '%'. $name. '%')
+        ->where('role', 'doctor')->with('doctor')->get();
+
+        // extract the doctor instances from the gotten users
+        $doctors = $users->map(function ($user){
+            return $user->doctor;
+        });
+        
+        return $this->render($doctors);
+    }
+
+    public function get_specialty(Request $request){
+        $specialty_id = $request->specialty_id;
+        $doctors = Doctor::where('specialty_id', $specialty_id)->get();
+        return $this->render($doctors);
+    }
 
     public function create()
     {
@@ -91,7 +124,14 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        //
+        // calculate the age
+        $age = date_diff(date_create($doctor->user->dob), date_create('today'))->y;
+
+        $bg = asset('storage/'.$doctor->user->profile_image);
+        // extract the contact information
+
+        $contacts = $doctor->user->contacts;
+        return view('home.doctor.profile', compact('doctor', 'bg', 'age', 'contacts'));
     }
 
     /**

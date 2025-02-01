@@ -24,10 +24,11 @@ Route::controller(UserController::class)
     Route::post('/logout',  'logout')->name('logout');
 });
 
+
+// Grouped Dashboard Routes
 Route::name('dashboard')
 ->prefix('dashboard')
 ->group(function () {
-    
     // Managing admin routes in the group
     Route::middleware('admin_auth')
     ->name('.admin')
@@ -124,6 +125,31 @@ Route::controller(DoctorController::class)
         Route::get('/register', 'create')->name('register');
         Route::post('/register', 'store')->name('create');
         Route::get('/{doctor}/profile', 'show')->name('show');
+<<<<<<< HEAD
         Route::get('/availability', 'availabilityPage')->name('availabily');
+=======
+
+        // Doctor Search Routes
+        // Doctor search routes based on specialty
+        Route::get('/specialty/{specialty}','get_by_specialty')->name('get_by_specialty');
+        
+        // Doctor search routes based on doctor name
+        Route::post('/search','get_by_name')->name('get_by_name');
+        
+        // Add a middleware to check the value of the specialty
+        Route::middleware('check_specialty')->post('/specialty', [DoctorController::class, 'get_specialty'])->name('get_specialty');
+    });
+});
+
+// Specialty Page handling routes
+Route::controller(SpecialtyController::class)
+->group(function (){
+    Route::get('/specialties', 'index')->name('home.specialties');
+    
+    Route::name('specialty.')
+    ->prefix('specialty')
+    ->group(function () {
+        Route::get('/{specialty}/profile', 'show')->name('show');
+>>>>>>> 3b4ee741bf94ecb7e13496df3ba7c022446c3509
     });
 });

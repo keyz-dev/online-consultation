@@ -5,6 +5,4 @@
     <div class="w-full h-[180px]">
         <img src="{{$service['image']}}" class="w-full h-full object-cover object-center rounded-lg" alt="service image">
     </div>
-
-
 </div>

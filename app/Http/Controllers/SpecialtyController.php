@@ -14,7 +14,16 @@ class SpecialtyController extends Controller
      */
     public function index()
     {
-        return view("home.specialty.index");
+        // Initial rendering with all the doctors
+        $specialties = Specialty::withCount('doctors')->get();
+
+        return $this->render($specialties);
+    }
+
+    // Display the page since the search has to work on it
+    public function render($specialties){
+        $bg = asset('images/bg4.jpg');
+        return view("home.specialty.index", compact('bg', 'specialties'));
     }
 
     /**

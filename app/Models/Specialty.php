@@ -16,4 +16,8 @@ class Specialty extends Model
     public function doctors(){
         return $this->hasMany(Doctor::class);
     }
+    
+    public function symptoms(){
+        return $this->hasMany(HealthConcern::class);
+    }
 }

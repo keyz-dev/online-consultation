@@ -14,9 +14,6 @@ use App\Http\Requests\StoreUserRequest;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return view("user.login");
@@ -28,7 +25,6 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request){
         DB::transaction(function () use ($request){
-
             // extract the validated request parameters
             $validated = $request->validated();
     
@@ -38,6 +34,7 @@ class UserController extends Controller
             if(isset($request['document']) && $request['document'] != null){
                 $validated['document'] = $this->file_handler($request, 'document', 'documents');
             }
+            
             $mass_array = $this->extract_user($validated);
     
             // Create a new user
@@ -63,7 +60,7 @@ class UserController extends Controller
     public function login(Request $request){
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:6',
+            'password' => 'required|min:5',
         ]);
         $email = $request->email;
         // attempt to find the user based on the email value
@@ -79,7 +76,6 @@ class UserController extends Controller
             if (session()->has('appointment_request')){
                 // redirect to the booking appointment page
             }
-
             if($user->role == "admin"){
                 return redirect()->route('dashboard.admin');
             }

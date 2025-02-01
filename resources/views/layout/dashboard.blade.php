@@ -28,7 +28,7 @@
             <x-dashboard.patient_sidebar :logo="$logo" />   
         @endif
         
-        <main class="w-full flex flex-col items-center mb-3 px-2 h-[300vh]">
+        <main class="w-full flex flex-col items-center mb-3 px-2 h-auto">
             <x-message_toast />
             <section class="w-full flex flex-col">
                 @yield('content')

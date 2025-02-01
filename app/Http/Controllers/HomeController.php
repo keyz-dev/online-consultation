@@ -19,7 +19,7 @@ class HomeController extends Controller
         // Get the resources for the home page
         $specialties = Specialty::withcount('doctors')->limit(5)->get();
         $q_and_as = Q_and_A::all();
-        $symptoms = HealthConcern::all();
+        $symptoms = HealthConcern::limit(10)->get();
         $hero_bg = asset("images/bg.png");
         $services = $this->get_services();
         $testimonials = Testimonial::all();

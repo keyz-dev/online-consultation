@@ -30,7 +30,7 @@
         <div id="navbar" class="absolute left-[-250%] top-[100%] transition-all duration-500 ease-in-out bg-accent-light flex flex-col justify-center min-w-[300px] min-h-[60vh] md:min-h-fit md:bg-transparent md:static md:left-auto md:flex-row md:flex-end items-start md:w-auto md:items-center md:justify-between z-1">
             <ul class="flex flex-col md:flex-row justify-between gap-6 sm:gap-2 sm:mr-0 md:items-center h-full space-x-5 mb-4 md:mb-0 lg:mr-36">
                 <li class="list-item"><a id="{{Route::is('home.index') ? 'active-link': ''}}" href="{{route('home.index')}}">Home</a></li>
-                <li class="list-item"><a href="{{route('home.index')}}">Services</a></li>
+                <li class="list-item"><a href="{{route('home.index')}}#services">Services</a></li>
                 <li class="list-item"><a href="{{route('home.index')}}">About Us</a></li>
                 <li class="list-item relative group">
                     <div class="flex gap-2 items-center">
@@ -38,9 +38,9 @@
                         <ion-icon name="chevron-down"></ion-icon>
                     </div>
                     <div class="absolute hidden flex-col gap-2 bg-white p-3 left-[100%] top-[100%] transition-transform transform translate-x-[-50%] group-hover:flex">
-                        <a href="{{route('home.index')}}#services">Specialties</a>
-                        <a href="{{route('home.index')}}#services">Doctors</a>
-                        <a class="text-nowrap" href="{{route('home.index')}}#services">Major Concerns</a>    
+                        <a href="{{route('home.specialties')}}">Specialties</a>
+                        <a href="{{route('home.doctors')}}">Doctors</a>
+                        <a class="text-nowrap" href="{{route('home.index')}}#symptoms">Major Concerns</a>    
                     </div>
                 </li>
                 <li class="list-item"><a href="{{route('home.index')}}">Contact</a></li>

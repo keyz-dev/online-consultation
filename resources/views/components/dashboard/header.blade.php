@@ -17,7 +17,8 @@
             <x-search 
                 name="global_search"
                 placeholder="Search Activities"
-                class="border-none outline-none min-w-[320px] placeholder:text-slate-400 placeholder:text-sm"
+                class=""
+                iclass="border-none outline-none min-w-[320px] placeholder:text-slate-400 placeholder:text-sm"
             />
         </div>
     </div>

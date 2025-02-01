@@ -1,4 +1,4 @@
-<section class="w-screen bg-primary-bg">
+<section class="w-screen bg-primary-bg" id="services">
     <section class="container py-10 flexible flex-col">
         <x-home.sub_heading text="Our Unique Services" />
         <p class="text-center text-secondary text-sm md:w-[40%]">

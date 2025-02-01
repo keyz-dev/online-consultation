@@ -7,6 +7,6 @@
        {{$content}}
     </div>
     <div class="text-[18px]">
-        <a href="{{$route}}" class="cursor-pointer">Learn More</a>
+        <a href="" class="cursor-pointer">Learn More</a>
     </div>
 </div>
