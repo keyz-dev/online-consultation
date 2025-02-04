@@ -10,7 +10,7 @@
  </div>
  
  {{-- document uploading --}}
- <x-input type="file" name="document" label="Medical Document" placeholder="upload a medical document" />
+ <x-input type="file" name="document" label="Medical Document (optional)" placeholder="upload a medical document" />
 
  {{-- password and confirmation pair --}}
  <div class="flex flex-col sm:flex-row gap-8 w-full items-center justify-between">
@@ -28,4 +28,5 @@
  </div>
 
  <p class="text-center">Already have an account? <a href="{{ route('user.login') }}"
-         class="text-accent hover:underline">Login</a></p>
+    class="text-accent hover:underline">Login</a>
+</p>

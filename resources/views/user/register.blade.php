@@ -51,9 +51,7 @@
                         <x-user_form.register.form_two />
                             
                     </section>
-                    
                 </div>
-                
             </div>    
         </div>
     </form>

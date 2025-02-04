@@ -8,7 +8,7 @@ class Patient extends Model
 {
     protected $fillable = [
         'user_id',
-        'documentName'
+        'document_name'
     ];
 
     public function user(){
