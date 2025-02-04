@@ -48,17 +48,17 @@
                 <div class="w-[300%] h-full flex overflow-hidden">
                     {{-- Form section 1 --}}
                     <section class="flex basis-full flex-col gap-4 items-center sm:p-2" id="form-section-1">
-                        <x-input type="text" name="name" label="Full Name" placeholder="User name" required/>
-                        <x-input type="email" name="email" label="Email" placeholder="User email" required/>
+                        <x-input type="text" name="name" label="Full Name" placeholder="User name" icon="far fa-user" required/>
+                        <x-input type="email" name="email" label="Email" placeholder="User email" icon="far fa-envelope" required/>
                 
                         <div class="flex flex-col sm:flex-row gap-8 w-full items-center justify-between">
-                            <x-input type="text" name="Nationality" label="Country" placeholder="Enter your country" required/>
-                            <x-input type="text" name="city" label="City" placeholder="Enter your city" required/>
+                            <x-input type="text" name="Nationality" label="Country" placeholder="Enter your country" icon="far fa-flag" required/>
+                            <x-input type="text" name="city" label="City" placeholder="Enter your city" icon="fas fa-location-dot" required/>
                         </div>
                         
                         {{-- Licence number and specialty --}}
                         <div class="flex flex-col sm:flex-row gap-8 w-full items-center justify-between">
-                            <x-input type="text" name="license_number" label="License Number" placeholder="Enter your License number" required/>
+                            <x-input type="text" name="license_number" label="License Number" placeholder="Enter your License number" icon="fas fa-key" required/>
                             <div class="w-full flex flex-col">
                                 <label for="specialty">Specialty</label>
                                 <select class="border-2 border-border_clr outline-none p-2 focus:border-accent transition-all ease-in-out duration-600" name="specialty_id" id="specialty">
@@ -99,8 +99,8 @@
 
                         {{-- Years of experience and consultation fee --}}
                         <div class="flex flex-col sm:flex-row gap-8 w-full items-center justify-between">
-                            <x-input type="number" name="experience" label="Years of Experience" placeholder="Your years of experience" required/>
-                            <x-input type="number" name="consultation_fee" label="Consultation Fee (CFA)" placeholder="Enter your consultation fee" required/>
+                            <x-input type="number" name="experience" label="Years of Experience" placeholder="Your years of experience" icon="fas fa-bolt" required/>
+                            <x-input type="number" name="consultation_fee" label="Consultation Fee (CFA)" placeholder="Enter your consultation fee" icon="fas fa-money-bill-wave" required/>
                         </div>
 
                         {{-- Payment type and number --}}
@@ -112,11 +112,11 @@
                                     <option value="momo">MTN Momo</option>
                                 </select>
                             </div>
-                            <x-input type="number" name="payment_number" label="Payment Number" required/>
+                            <x-input type="number" name="payment_number" icon="fas fa-money-bill-1-wave" label="Payment Number" required/>
                         </div>
                         
                         {{-- Institution of current service --}}
-                        <x-input type="text" name="hospital" label="Working At?" placeholder="Enter hospital name" required/>
+                        <x-input type="text" name="hospital" label="Working At?" placeholder="Enter hospital name" icon="far fa-hospital" required/>
                         
                         {{-- Description --}}
                         <x-text-area name="descriptions" label="Brief Description" placeholder="How do you like being a doctor??" rows="4" cols="30"/>
@@ -141,26 +141,25 @@
                         {{-- primary contact information  and image divisibility --}}
                         <div class="flex flex-col sm:flex-row gap-8 w-full items-center justify-between">
                             <div class="flex flex-col gap-4 sm:gap-3 w-full items-center justify-between">
-                                <x-input type="number" name="phone" label="Phone" placeholder="Enter your phone number" required/>
-                                <x-input type="number" name="whatsapp" label="Whatsapp" placeholder="Enter your whatsapp number" required/>
+                                <x-input type="number" name="phone" label="Phone" placeholder="Enter your phone number" icon="fas fa-phone" required/>
+                                <x-input type="number" name="whatsapp" label="Whatsapp" placeholder="Enter your whatsapp number" icon="fab fa-whatsapp" required/>
                                 
-                                <x-input type="number" name="telegram" label="Telegram (optional)" placeholder="Enter your telegram number"/>
+                                <x-input type="number" name="telegram" label="Telegram (optional)" placeholder="Enter your telegram number" icon="fab fa-telegram"/>
                             </div>
                             
                             {{-- profile image uploader --}}
                             <x-image_uploader 
                                 name="profile_image"
                                 class="min-h-[200px] h-full"
-
                             />
                         </div>
 
                         {{-- facebook url link --}}
-                        <x-input type="text" name="facebook" label="Facebook Url (optional)" placeholder="Enter your facebook profile link in here"/>
+                        <x-input type="text" name="facebook" label="Facebook Url (optional)" placeholder="Enter your facebook profile link in here" icon="fab fa-facebook"/>
 
                         <div class="flex flex-col sm:flex-row gap-8 w-full items-center justify-between">
-                            <x-input type="password" name="password" label="Password" placeholder="Enter your password" required/>
-                            <x-input type="password" name="password_confirmation" label="Confirm password" placeholder="confirm your password" required/>
+                            <x-input type="password" name="password" label="Password" placeholder="Enter your password" icon="far fa-eye" required/>
+                            <x-input type="password" name="password_confirmation" label="Confirm password" placeholder="confirm your password" icon="far fa-eye" required/>
                         </div>
                         
                         {{-- B-om buttons --}}
@@ -175,10 +174,8 @@
                         {{-- Link to the Login page --}}
                         <p class="text-center">Already have an account? <a href="{{route("user.login")}}" class="text-accent hover:underline">Login</a></p>
                     </section>
-                    
                 </div>
             </div>
-
         </div>    
     </form>
 </section>

@@ -11,9 +11,9 @@
             <p>{{session('registraton_success')}}</p>
         @endif
         @csrf
-        <x-input type="email" name="email" label="Email" placeholder="User email" required/>
+        <x-input type="email" name="email" label="Email" placeholder="User email" icon="far fa-envelope" required/>
 
-        <x-input type="password" name="password" label="Password" placeholder="Enter your password" required/>
+        <x-input type="password" name="password" label="Password" placeholder="Enter your password" icon="far fa-eye" required/>
         <div class="w-full flex justify-between items-center">
             <div class="flex justify-between gap-2 items-center">
                 <input type="checkbox" id="remember" name="remember" class="size-[16px] accent-black p-2">

@@ -1,11 +1,11 @@
 {{-- name and email inputs --}}
-<x-input type="text" name="name" label="Full Name" placeholder="User name" required/>
-<x-input type="email" name="email" label="Email" placeholder="User email" required/>
+<x-input type="text" name="name" label="Full Name" placeholder="User name" icon="far fa-user" required/>
+<x-input type="email" name="email" icon="far fa-envelope" label="Email" placeholder="User email" required/>
 
 {{-- Nationality and city inputs --}}
 <div class="flex flex-col sm:flex-row gap-8 w-full items-center justify-between">
-    <x-input type="text" name="Nationality" label="Country" placeholder="Enter your country" required/>
-    <x-input type="text" name="city" label="City" placeholder="Enter your city" required/>
+    <x-input type="text" name="Nationality" label="Country" icon="far fa-flag" placeholder="Enter your country" required/>
+    <x-input type="text" name="city" icon="fas fa-location-dot" label="City" placeholder="Enter your city" required/>
 </div>
 
 {{-- Gender and Dob --}}

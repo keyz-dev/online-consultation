@@ -17,6 +17,7 @@ class Input extends Component
     public $class;
     public $id;
     public $disabled;
+    public $icon;
     public function __construct(
         $type = 'text',
         $name,
@@ -26,7 +27,8 @@ class Input extends Component
         $placeholder = null,
         $class = '',
         $label_styles = null,
-        $disabled = "false"
+        $disabled = "false",
+        $icon = null
     ) {
         $this->type = $type;
         $this->name = $name;
@@ -37,11 +39,9 @@ class Input extends Component
         $this->class = $class;
         $this->label_styles = $label_styles;
         $this->disabled = $disabled;
+        $this->icon = $icon;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
     public function render(): View|Closure|string
     {
         return view('components.input');

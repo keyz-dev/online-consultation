@@ -1,8 +1,8 @@
  {{-- phone and sap number pair --}}
  <div class="flex flex-col sm:flex-row gap-8 w-full items-center justify-between">
     <div class="flex flex-col gap-8 w-full items-center justify-between">
-        <x-input type="phone" name="phone" label="Phone" placeholder="Enter your phone number" required />
-        <x-input type="whatsapp" name="whatsapp" label="Whatsapp" placeholder="Enter your whatsapp number" required />
+        <x-input type="phone" name="phone" label="Phone" placeholder="Enter your phone number" icon="fas fa-phone" required />
+        <x-input type="whatsapp" name="whatsapp" label="Whatsapp" icon="fab fa-whatsapp" placeholder="Enter your whatsapp number" required />
     </div>
 
     {{-- image uploader --}}
@@ -14,8 +14,8 @@
 
  {{-- password and confirmation pair --}}
  <div class="flex flex-col sm:flex-row gap-8 w-full items-center justify-between">
-    <x-input type="password" name="password" label="Password" placeholder="Enter your password" required />
-    <x-input type="password" name="password_confirmation" label="Confirm password" placeholder="confirm your password"
+    <x-input type="password" name="password" label="Password" icon="far fa-eye" placeholder="Enter your password" required />
+    <x-input type="password" name="password_confirmation" label="Confirm password" icon="far fa-eye" placeholder="confirm your password"
          required />
  </div>
 
