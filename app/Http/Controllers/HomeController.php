@@ -17,9 +17,11 @@ class HomeController extends Controller
     public function index()
     {
         // Get the resources for the home page
-        $specialties = Specialty::withcount('doctors')->limit(5)->get();
+        // $specialties = Specialty::withcount('doctors')->limit(5)->get();
+        $specialties = [];
         $q_and_as = Q_and_A::all();
-        $symptoms = HealthConcern::limit(10)->get();
+        // $symptoms = HealthConcern::limit(10)->get();
+        $symptoms = [];
         $hero_bg = asset("images/bg.png");
         $services = $this->get_services();
         $testimonials = Testimonial::all();

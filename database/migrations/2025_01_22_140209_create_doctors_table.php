@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('consultation_fee', 10, 2)->default(0);
             $table->integer('experience')->default(0);
             $table->integer('rating')->default(0);
-            $table->string('license_number');
+            $table->string('license_number')->unique();
             $table->string('hospital');
             $table->text('descriptions');
             $table->timestamps();

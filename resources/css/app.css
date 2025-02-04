@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 *{
-    font-family: 'Euclid Circular A', 'Product Sans Medium Regular';
+    font-family: 'Euclid Circular', 'Product Sans Medium Regular';
     box-sizing: border-box;
     margin: 0;
     padding: 0;

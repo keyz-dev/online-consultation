@@ -14,15 +14,14 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
             $table->enum('gender', ['male', 'female']);
             $table->integer('age')->default(0);
             $table->string('password');
             $table->date('dob');
             $table->string('Nationality')->default('Cameroon');
-            $table->string('city');
-            $table->enum('role', ['admin', 'doctor', 'patient']);
-            $table->string('profile_image');
+            $table->string('city')->default('Yaounde');
+            $table->enum('role', ['admin', 'doctor', 'patient'])->default('patient');
+            $table->string('profile_image')->default('placeholder.png');
             $table->timestamps();
         });
     }

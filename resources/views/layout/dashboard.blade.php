@@ -8,6 +8,7 @@
     <title>@yield('title', 'Dashboard')</title>
     <link rel="stylesheet" href="{{asset('font/css/all.css')}}">
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
+    <link rel="stylesheet" href="{{asset('font/euclid/style.css')}}">
     @vite('resources/css/app.css')
     @vite('resources/css/navbar-styles.css')
     @stack('styles')

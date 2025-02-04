@@ -20,8 +20,8 @@ export default {
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-                custom: ['Sofia Pro Light', 'Euclid Circula A'],
-                hero: ['Recoleta', 'Sofia Pro Light', 'Euclid Circula']
+                custom: ['Sofia Pro Light', 'Euclid Circular'],
+                hero: ['Recoleta', 'Sofia Pro Light', 'Euclid Circular']
             },
             colors:{
                 accent: {

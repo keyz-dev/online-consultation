@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_contacts', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('user_id')->index();
             $table->foreign('user_id', 'fk_contact_user')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreignId('contact_id')->index();
             $table->foreign('contact_id', 'fk_contact_doc')->references('id')->on('contact_information')->onDelete('CASCADE')->onUpdate('CASCADE');
-            $table->string('value',)->nullable();
+            $table->string('value');
+            $table->primary(['contact_id', 'value']);
             $table->timestamps();
         });
     }

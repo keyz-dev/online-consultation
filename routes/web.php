@@ -125,9 +125,6 @@ Route::controller(DoctorController::class)
         Route::get('/register', 'create')->name('register');
         Route::post('/register', 'store')->name('create');
         Route::get('/{doctor}/profile', 'show')->name('show');
-<<<<<<< HEAD
-        Route::get('/availability', 'availabilityPage')->name('availabily');
-=======
 
         // Doctor Search Routes
         // Doctor search routes based on specialty
@@ -150,6 +147,5 @@ Route::controller(SpecialtyController::class)
     ->prefix('specialty')
     ->group(function () {
         Route::get('/{specialty}/profile', 'show')->name('show');
->>>>>>> 3b4ee741bf94ecb7e13496df3ba7c022446c3509
     });
 });
