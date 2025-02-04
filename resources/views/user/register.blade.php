@@ -44,13 +44,11 @@
                     {{-- Form section 1 --}}
                     <section class="flex basis-full flex-col gap-4 items-center sm:p-2" id="form-section-1">
                         <x-user_form.register.form_one />
-                        
                     </section>
     
                     {{-- Second form --}}
                     <section class="flex flex-col basis-full gap-4 items-center sm:p-2" id="form-section-2">
-                        <div class="flex flex-col sm:flex-row gap-8 w-full items-center justify-between">
-                            <x-user_form.register.form_two />
+                        <x-user_form.register.form_two />
                             
                     </section>
                     

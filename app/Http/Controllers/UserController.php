@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\ContactInformation;
+use App\Models\Patient;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\UserContact;
@@ -31,10 +32,9 @@ class UserController extends Controller
             if(isset($validated['profile_image']) && $validated['profile_image'] != null){
                 $validated['profile_image'] = $this->file_handler($request, 'profile_image', 'profile_images');
             }
-            if(isset($request['document']) && $request['document'] != null){
-                $validated['document'] = $this->file_handler($request, 'document', 'documents');
+            if(isset($validated['document']) && $validated['document'] != null){
+                $validated['document'] = $this->file_handler($request, 'document', 'medical_records');
             }
-            
             $mass_array = $this->extract_user($validated);
     
             // Create a new user
@@ -49,6 +49,15 @@ class UserController extends Controller
                     $user->contacts()->attach($contact->id, compact('value'));
                 }
             }
+            // The default role is the patient
+            $document = $validated['document'] ?? null;
+
+            $patient = Patient::create([
+                'user_id' => $user->id,
+                'document_name'=> $document,
+            ]);
+
+            // create a patient
             session([
                 'status' => 'success',
                 "message"=>"User created successfully!"

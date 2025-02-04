@@ -1,3 +1,4 @@
+
 <div {{$attributes->merge(['class' => "h-[200px] w-full flex items-center justify-center $class"])}}>
     <label for="input-file" id="drop-area" class="w-full h-full flex items-center justify-center flex-col">  
         <input type="file" accept="image/*" name="{{$name}}" id="input-file" hidden>

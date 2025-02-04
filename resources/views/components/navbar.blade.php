@@ -2,8 +2,8 @@
     <script type="text/javascript" src="{{asset('js/navbar.js')}}" defer></script>
 @endpush
 
-<header class="w-full flex flex-col fixed left-0 top-0 z-20" >
-    <div class="container h-auto flex flex-col items-center sm:flex-row sm:items-center gap-2 py-2 bg-white border-b border-b-line_clr justify-between">
+<header class="w-full flex flex-col z-20" >
+    <div class="container h-auto flex flex-col items-center sm:flex-row sm:items-center gap-2 py-1 bg-white border-b border-b-line_clr justify-between">
         <div class="flex items-center gap-2">
             <ion-icon class="text-accent size-[30px]" name="call-outline"></ion-icon>
             <span>Call Us - (+237) 682980313</span>
@@ -16,7 +16,7 @@
             </select>
         </form>
     </div>
-    <nav class="container flex items-center justify-around md:justify-between py-3 px-3 relative z-10 bg-white">
+    <nav class="container flex items-center justify-around md:justify-between py-1 px-3 relative z-10 bg-white">
         <x-button 
             type="button"
             id="toggleNavBarBtn"

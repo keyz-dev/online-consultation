@@ -25,7 +25,13 @@ class StoreUserRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'password' => 'required|confirmed|min:5',
-            'profile_image' => 'nullable|image|mimes:jpg,png,jpeg,webp,ico,svg,jiff|max:2048',
+            'profile_image' => 'nullable|image|mimes:jpg,png,jpeg,webp,ico,svg,jiff,avif|max:2048',
+            'document' => [
+                'nullable',
+                'file',
+                'mimes:pdf,jpeg,jpg,png,webp,tiff,jiff,avif,doc,docx,xls,xlsx,txt,rtf,dcm', 
+                'max:5240', // Max file size (5 MB, adjust as needed)
+            ],
             'phone' => 'required|min:9',
             'whatsapp' => 'min:9',
             'Nationality' => 'required',

@@ -3,7 +3,7 @@
 @endphp
 
 <div class="relative flex items-center justify-between w-full gap-3" onclick="displayBtn(this)" id="profile_div">
-    <img src="{{asset('storage/$user->profile_image')}}" alt="pro" class="rounded-full w-[50px] h-[50px] object-cover object-center">
+    <img src="{{asset('storage/'.$user->profile_image)}}" alt="pro" class="rounded-full w-[50px] h-[50px] object-cover object-center">
     <div class="text-right capitalize">
         <p>{{$user->name}}</p>
         <p class="text-[11px] text-secondary">{{$user->role}}</p>

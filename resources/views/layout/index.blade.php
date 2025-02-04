@@ -18,7 +18,7 @@
 
 {{-- class="flex h-screen flex-col items-center" --}}
 
-<body class="bg-white pt-[200px] md:pt-[150px]">   
+<body class="bg-white">   
     <x-navbar :logo="$logo"/>
 
     <main class="w-full h-auto flex flex-col items-center p-0">
