@@ -1,7 +1,7 @@
 <section class="h-[80vh] max-w-[100vh] md:max-w-[100vw] w-full bg-cover" style="background-image: url({{$bg}});">
-    <div class="container w-full h-full flex items-center justify-between ">
-        <div class="w-full sm:w-3/4 md:w-full h-[90%] flex flex-col items-center sm:items-start justify-center gap-7 px-2 sm:px-0">
-            <div class="text-[42px] flex flex-col items-center text-center sm:items-start sm:text-left sm:text-[64px] sm:leading-[80px]">
+    <div class="container w-[90%] py-4 h-full flex items-center justify-center">
+        <div class="w-full h-[90%] flex flex-col items-center sm:items-start justify-center gap-7 px-2 sm:px-0">
+            <div class="text-[42px] flex flex-col items-center text-center sm:items-start sm:text-left sm:text-[64px] sm:leading-[70px]">
                 <h1 class="font-custom text-primary">
                     <p>Our <span class="text-accent font-semibold font-hero">HealthCare</span> <br>Solutions Meet <br><span class="text-accent font-semibold font-hero">Every</span> Need</p> 
                 </h1>

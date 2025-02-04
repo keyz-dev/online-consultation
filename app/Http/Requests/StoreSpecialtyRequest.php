@@ -24,6 +24,7 @@ class StoreSpecialtyRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'noun' => 'required|string|max:255',
             'icon_url' => ['required', 'string', new SvgElement],
             'description' => 'required|string',
         ];

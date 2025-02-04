@@ -9,6 +9,7 @@ class Specialty extends Model
     protected $table = "specialties";
     protected $fillable = [
         'name',
+        'noun',
         'icon_url',
         'description',
     ];

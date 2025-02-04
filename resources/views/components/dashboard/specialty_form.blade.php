@@ -2,6 +2,8 @@
     <h1 class="text-xl font-semibold">{{$title}}</h1>
     @csrf
     <x-input type="text" name="name" label="Name" placeholder="Specialty name"  value="{{$specialty->name ?? ''}}" required/>
+    
+    <x-input type="text" name="noun" label="Noun" placeholder="Specialty noun"  value="{{$specialty->noun ?? ''}}" required/>
         
     <x-text-area name="icon_url" label="Icon Url(svg element)" placeholder="Specialty icon Url" rows="4" cols="30" value="{{$specialty->icon_url ?? ''}}"/>
     

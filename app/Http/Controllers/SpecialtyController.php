@@ -16,7 +16,6 @@ class SpecialtyController extends Controller
     {
         // Initial rendering with all the doctors
         $specialties = Specialty::withCount('doctors')->get();
-
         return $this->render($specialties);
     }
 
@@ -48,6 +47,7 @@ class SpecialtyController extends Controller
 
         Specialty::create([
             'name' => $validated['name'],
+            'noun' => $validated['noun'],
             'icon_url' => $svg_name,
             'description' => $validated['description']
         ]);
