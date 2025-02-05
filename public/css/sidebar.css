@@ -1,0 +1,192 @@
+:root{
+    --base-clr: #11121a;
+    --line-clr: #424341;
+    --hover-clr: #222533;
+    --text-clr: #e6e6ef;
+    --accent-clr: #5e63ff;
+    --trans-accent-clr: #cdd6fb6d;
+    --secondary-text-clr: #b0b3c1
+}
+
+/* light mode */
+:root{
+    --base-clr: #e2e8f0;
+    --line-clr: #ced1dd;
+    --hover-clr: #f2f6f8;
+    --text-clr: #535455d5;
+    --accent-clr: #3e8cff;
+    --secondary-text-clr: #b0b3c1
+}
+
+#sidebar{
+    height: 100vh;
+    width: 320px;
+    padding: 30px 1em;
+    padding-top: min(10px, 7%);
+    position: sticky;
+    top: 0;
+    align-self: start;
+    transition: 300ms ease-in-out;
+    overflow: auto;
+    text-wrap: nowrap;
+    scrollbar-width: none !important;
+}
+#sidebar::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+#sidebar.close{
+    padding: 1em 5px;
+    width: 60px;
+}
+
+#sidebar ul{
+    list-style: none;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+#sidebar ul li.active a{
+    color: var(--accent-clr);
+    background-color: var(--trans-accent-clr);
+    svg{
+        fill: var(--accent-clr)
+    }
+}
+#sidebar a, #sidebar .dropdown-btn, #sidebar .logo{
+    border-radius: .5em;
+    padding: .85em;
+    text-decoration: none;
+    color: var(--text-clr);
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+.dropdown-btn{
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+}
+#sidebar svg{
+    flex-shrink: 0; /*prevent size distortion */
+    fill: var(--text-clr)
+}
+#sidebar a span, #sidebar .dropdown-btn span{
+    flex-grow: 1; /*fill out parent and push the icon to the end*/
+}
+#sidebar a:hover, #sidebar .dropdown-btn:hover{
+    background-color: var(--hover-clr);
+}
+#sidebar .sub-menu{
+    transition: 300ms ease-in-out;
+    display: grid;
+    grid-template-rows: 0fr;
+    > div{
+        overflow: hidden;
+    }
+}
+#sidebar .sub-menu.show{
+    grid-template-rows: 1fr;
+}
+.dropdown-btn svg{
+    transition: 200ms ease;
+}
+.rotate svg:last-child{
+    rotate: 180deg !important;
+}
+#sidebar .sub-menu a{
+    padding-left: 2em;
+}
+
+/* style the toggle button */
+#toggle-btn{
+    border: 2px solid red;
+    margin-left: auto;
+    padding: 1em;
+    border: none;
+    border-radius: .5em;
+    background: none;
+    cursor: pointer;
+
+    svg{
+        transition: rotate 150ms ease;
+    }
+}
+#toggle-btn:hover{
+    background-color: var(--hover-clr);
+}
+
+/* Media Query */
+
+@media(max-width: 800px){
+    body{
+        grid-template-columns: 1fr;
+    }
+    main{
+        padding: 2em, 1em, 60px, 1em
+    }
+    .container{
+        padding: 0;
+    }
+    #sidebar{
+        height: 60px;
+        top: unset;
+        width: 100%;
+        border: none;
+        border-top: 1px solid var(--line-clr);
+        padding: 0;
+        position: fixed;
+        bottom: 0;
+
+        ul{
+            padding: 0;
+            display: grid;
+            grid-auto-columns: 60px;
+            grid-auto-flow: column;
+            overflow-x: auto;
+            place-items: center;
+        }
+        ul li{
+            height: 100%;
+        }
+
+        ul a, ul .dropdown-btn{
+            height: 60px;
+            width: 60px;
+            padding: 0;
+            border-radius: 0;
+            justify-content: center;
+        }
+
+        ul li span, ul li:first-child, .dropdown-btn svg:last-child{
+            display: none;
+        }
+        ul li .sub-menu.show{
+            position: fixed;
+            bottom: 60px;
+            left: 0;
+            height: 70px;
+            width: 100%;
+            background-color: var(--hover-clr);
+            border-top: 1px solid var(--line-clr);
+            display: flex;
+            justify-content: center;
+            overflow-y: hidden;
+
+            > div{
+                overflow-x: auto;
+            }
+            li{
+                display: inline-flex;
+            }
+            a{
+                padding: 1em;
+                width: auto;
+                justify-content: center;
+            }
+        }
+    }
+}

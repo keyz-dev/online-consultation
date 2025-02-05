@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: 'Euclid Circular', 'Product Sans Medium Regular';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+@layer components {
+    .btn {
+        @apply px-4 py-2 font-medium text-base min-w-32 min-h-[45px] transition duration-150 ease-in-out;
+    }
+    .btn-primarybtn {
+        @apply bg-accent text-white hover:opacity-75;
+    }
+    .btn-secondarybtn {
+        @apply bg-accent text-white hover:opacity-75 border border-border_clr;
+    }
+    
+}
+
+@layer utilities{
+    .flexible{
+        @apply flex items-center gap-3;
+    }
+    .default_transition{
+        @apply transition-all duration-300 ease-in-out;
+    }
+}
