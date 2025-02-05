@@ -66,69 +66,11 @@
                     </div>
 
                     {{-- Table like --}}
-                    <table class="w-full">
-                        <tbody>
-                            <tr class="h-[20px]">
-                                <td class="font-semibold min-w-[100px]">
-                                    Specialty
-                                </td>
-                                <td class="capitalize">
-                                    {{$doctor->specialty->name}}
-                                </td>
-                            </tr>
-                            <tr class="h-[20px]">
-                                <td class="font-semibold min-w-[100px]">
-                                    Gender
-                                </td>
-                                <td class="capitalize">
-                                    {{$doctor->user->gender}}
-                                </td>
-                            </tr>
-                            <tr class="h-[20px]">
-                                <td class="font-semibold min-w-[100px]">
-                                    Age
-                                </td>
-                                <td class="capitalize">
-                                    {{$age}} yrs old
-                                </td>
-                            </tr>
-                            <tr class="h-[20px]">
-                                <td class="font-semibold min-w-[100px]">
-                                    Works at
-                                </td>
-                                <td class="capitalize">
-                                    {{$doctor->hospital}}
-                                </td>
-                            </tr>
-                            <tr class="h-[20px]">
-                                <td class="font-semibold min-w-[100px]">
-                                    Address
-                                </td>
-                                <td class="capitalize">
-                                    {{$doctor->user->city}}, {{$doctor->user->Nationality}}
-                                </td>
-                            </tr>
-                            <tr class="h-[20px]">
-                                <td class="font-semibold min-w-[100px]">
-                                    Contact Via
-                                </td>
-                                <td class="capitalize">
-                                    <div class="flexible">
-                                        @foreach($contacts as $contact)
-                                            @php
-                                                $value = $contact->pivot->value;
-                                                $href = $contact->name == 'email' ? 'mailto:'.$value : ( $contact->name == 'whatsapp' ? "https://wa.me/237$value?text=I%20saw%20you%20as%20a%20doctor%20on%20Drogcine%20and%20will%20like%20to%20know%20more%20about%20you" : $value);
-                                            @endphp
-                                            <a href="{{$href}}" class="default_transition text-accent hover:text-white hover:bg-accent size-[30px] rounded-full border inline-flex items-center justify-center" title="{{$contact->name}} Link" target="_blank">
-                                                {!! $contact->icon_url!!}
-                                            </a>
-                                        @endforeach
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
+                    <x-doctor.profile_table
+                        :age="$age"
+                        :contacts="$contacts"
+                        :doctor="$doctor"
+                    />
                     {{-- Button to book an appointment --}}
                     <a href="" class="flex items-center gap-1 border border-line_clr w-full mt-[10px]">
                         <x-button

@@ -60,8 +60,11 @@ class DoctorDashboardController extends Controller
     public function profile(){
         // Get the doctor information
         $user = Auth::user();
-        $doctor = Doctor::where('user_id', $user->id)->first();
-        return view('dashboard.doctor.profile.index', compact('doctor'));
+        $doctor = $user->doctor;
+        // calculate the age and extract the contacts
+        $age = date_diff(date_create($doctor->user->dob), date_create('today'))->y;
+        $contacts = $doctor->user->contacts;
+        return view('dashboard.doctor.profile.index', compact('doctor', 'age', 'contacts'));
     }
     public function appointments(){
         // Get the doctor information

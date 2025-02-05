@@ -154,7 +154,7 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        //
+        return view('dashboard.doctor.profile.edit', compact('doctor'));
     }
 
     /**
@@ -162,7 +162,8 @@ class DoctorController extends Controller
      */
     public function update(Request $request, Doctor $doctor)
     {
-        //
+        dump($doctor);
+        dd($request);
     }
 
     /**
@@ -170,7 +171,7 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
-        //
+        dd($doctor);
     }
 
 }

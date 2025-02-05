@@ -23,5 +23,8 @@
             Route::get('/chats', 'chats')->name('.chats');
             Route::get('/calls', 'calls')->name('.calls');
         });
+
+        // Require specific account traits
+        require base_path('/routes/dashboard/doctor/profile.php');
     });
 ?>
