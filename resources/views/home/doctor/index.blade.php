@@ -1,22 +1,22 @@
 @extends('layout.index')
-@section('title', 'Home')
+@section('title', 'Doctor')
 
 @section('content')
-    <x-home.hero_section 
+    <x-home.hero_section
         route="Doctors"
         text="Our Medical Crew"
         :bg="$bg"
     />
-    
+
     <main class="w-full">
-        <x-doctor.search_section 
+        <x-doctor.search_section
             :specialties="$specialties"
         />
 
         {{-- Doctors display section --}}
         <section class="container py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4  gap-6">
             @forelse ($doctors as $doctor)
-                <x-doctor.doctor_card 
+                <x-doctor.doctor_card
                     :doctor="$doctor"
                 />
             @empty

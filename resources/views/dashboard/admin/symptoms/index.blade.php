@@ -9,14 +9,15 @@
         }
     </style>
 @endpush
+
 <section class="w-full flex flex-col gap-2">
-    <x-dashboard.page_url 
+    <x-dashboard.page_url
         page="Symptoms"
     />
     <div class="w-full flex items-center justify-between">
         <h1 class="text-[25px] text-primary font-medium">Symptoms</h1>
         <a href="{{route('dashboard.admin.symptom.create')}}" class="flex items-center gap-2 px-3 py-1 text-white rounded-md">
-            <x-button 
+            <x-button
                 text="Add Symptom"
                 icon='<i class="fas fa-plus"></i>'
                 class="btn-secondarybtn"
@@ -30,12 +31,12 @@
                 @php
                     $filter_icon = file_get_contents(public_path('icons/filter.svg'))
                 @endphp
-                <x-button 
+                <x-button
                     text="Filter"
                     :icon="$filter_icon"
                     class="bg-secondary-bg min-h-[40px] rounded-lg min-w-fit"
                 />
-                <x-search 
+                <x-search
                     name="specialty_search"
                     placeholder="Search Symptoms"
                     class=""
@@ -49,11 +50,11 @@
                     $list_icon = file_get_contents(public_path('icons/list.svg'))
                 @endphp
 
-                <x-button 
+                <x-button
                     :icon="$list_icon"
                     class="min-h-fit min-w-fit p-2 bg-secondary-bg hover:opacity-80"
                 />
-               <x-button 
+               <x-button
                     :icon="$grid_icon"
                     class="min-h-fit min-w-fit p-2 hover:bg-secondary-bg hover:opacity-80"
                />
@@ -76,7 +77,7 @@
                         <tr class="border-b-2 border-b-border_clr">
                             <td class="py-2 name-cell">
                                 <div class="flex items-center gap-3">
-                                    {!! file_get_contents(public_path('storage/symptom_icons/'.$symptom->icon_url)) !!}
+                                    <img src="{{asset('storage/'.$symptom->icon_url)}}" alt="icon" class="size-[50px] object-cover object-center">
                                     <h2 class="font-normal">{{$symptom->name}}</h2>
                                 </div>
                             </td>
@@ -86,7 +87,7 @@
                             <td class="">
                                 <p>{{$symptom->specialty->name}}</p>
                             </td>
-                            
+
                             <td class="text-xl text-secondary">
                                 <div class="relative action_parent group">
                                     <i class="fas fa-ellipsis-h"></i>

@@ -2,8 +2,11 @@
     <h1 class="text-xl font-semibold">{{$title}}</h1>
     @csrf
     <x-input type="text" name="name" label="Name" placeholder="Symptom name"  value="{{$symptom->name ?? ''}}" required/>
-        
-    <x-text-area name="icon_url" label="Icon Url(svg element)" placeholder="Symptom icon Url" rows="4" cols="30" value="{{$symptom->icon_url ?? ''}}"/>
+
+    <x-image_uploader
+        name="icon_url"
+        class="min-h-[200px] h-full"
+    />
 
     <div class="w-full flex flex-col">
         <label for="specialty">Specialty</label>

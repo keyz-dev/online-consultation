@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.40, for Win64 (x86_64)
+-- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: medical
 -- ------------------------------------------------------
--- Server version	8.0.40
+-- Server version	10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,13 +21,13 @@
 
 DROP TABLE IF EXISTS `appointments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `appointments` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `doctor_id` bigint unsigned NOT NULL,
-  `patient_id` bigint unsigned NOT NULL,
-  `slot_id` bigint unsigned DEFAULT NULL,
-  `status` enum('completed','cancelled','pending') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `doctor_id` bigint(20) unsigned NOT NULL,
+  `patient_id` bigint(20) unsigned NOT NULL,
+  `slot_id` bigint(20) unsigned DEFAULT NULL,
+  `status` enum('completed','cancelled','pending') NOT NULL DEFAULT 'pending',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -55,12 +55,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `availabilities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `availabilities` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `doctor_id` bigint unsigned NOT NULL,
-  `status` enum('active','expired') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
-  `week_number` int NOT NULL DEFAULT '6',
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `doctor_id` bigint(20) unsigned NOT NULL,
+  `status` enum('active','expired') NOT NULL DEFAULT 'active',
+  `week_number` int(11) NOT NULL DEFAULT 6,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -84,11 +84,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `cache`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cache` (
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `expiration` int NOT NULL,
+  `key` varchar(255) NOT NULL,
+  `value` mediumtext NOT NULL,
+  `expiration` int(11) NOT NULL,
   PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -108,11 +108,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `cache_locks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cache_locks` (
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `expiration` int NOT NULL,
+  `key` varchar(255) NOT NULL,
+  `owner` varchar(255) NOT NULL,
+  `expiration` int(11) NOT NULL,
   PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -132,12 +132,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `consultations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `consultations` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `doctor_id` bigint unsigned NOT NULL,
-  `patient_id` bigint unsigned NOT NULL,
-  `status` enum('cancelled','completed','ongoing') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'ongoing',
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `doctor_id` bigint(20) unsigned NOT NULL,
+  `patient_id` bigint(20) unsigned NOT NULL,
+  `status` enum('cancelled','completed','ongoing') NOT NULL DEFAULT 'ongoing',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -163,11 +163,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `contact_information`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `contact_information` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `icon_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default_icon.png',
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `icon_url` varchar(255) NOT NULL DEFAULT 'default_icon.png',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -191,18 +191,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `doctors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `doctors` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` bigint unsigned NOT NULL,
-  `specialty_id` bigint unsigned NOT NULL,
-  `payment_id` bigint unsigned NOT NULL,
-  `consultation_fee` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `experience` int NOT NULL DEFAULT '0',
-  `rating` int NOT NULL DEFAULT '0',
-  `license_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `hospital` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descriptions` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `specialty_id` bigint(20) unsigned NOT NULL,
+  `payment_id` bigint(20) unsigned NOT NULL,
+  `consultation_fee` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `experience` int(11) NOT NULL DEFAULT 0,
+  `rating` int(11) NOT NULL DEFAULT 0,
+  `license_number` varchar(255) NOT NULL,
+  `hospital` varchar(255) NOT NULL,
+  `descriptions` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -231,15 +231,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `failed_jobs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `failed_jobs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -260,19 +260,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `health_concerns`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `health_concerns` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `icon_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default_icon.png',
-  `specialty_id` bigint unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `icon_url` varchar(255) NOT NULL DEFAULT 'default_icon.png',
+  `specialty_id` bigint(20) unsigned NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_concern_specialty` (`specialty_id`),
   KEY `health_concerns_name_index` (`name`),
   CONSTRAINT `fk_concern_specialty` FOREIGN KEY (`specialty_id`) REFERENCES `specialties` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,6 +281,7 @@ CREATE TABLE `health_concerns` (
 
 LOCK TABLES `health_concerns` WRITE;
 /*!40000 ALTER TABLE `health_concerns` DISABLE KEYS */;
+INSERT INTO `health_concerns` VALUES (7,'Headache','symptoms/6lfXURyDU60X2qxFd4F2pm4b8Sm3OI5OIIdf7X9y.png',16,'2025-02-05 13:02:43','2025-02-05 13:02:43'),(8,'High blood','symptoms/PFIqJlXwP3kunBBL4N9KFhwduPGQW70VGZc2rWbb.png',21,'2025-02-05 13:04:21','2025-02-05 13:11:24'),(9,'fatigue','symptoms/uDhqdR7FJMS0YbPwTKOhvunhg1ZgAJpelyAoqtLE.png',15,'2025-02-05 13:04:53','2025-02-05 13:04:53'),(10,'Chest Pain','symptoms/HM8ZrULS8R9fgAq5rlz81lsv0THj935r776PpbW0.png',14,'2025-02-05 13:14:11','2025-02-05 13:14:11'),(11,'Nausea and Vomiting','symptoms/Q0etlSTV7XPOWDKhPT1D22Ol6vlHwAhQfUzV69s9.png',15,'2025-02-05 13:15:08','2025-02-05 13:15:08'),(12,'Flu','symptoms/gwCfTUJsS6TFfN34WhBwRFEIJzikigJtlGt0G6Fh.png',20,'2025-02-05 13:15:32','2025-02-05 13:15:32'),(13,'Dizziness','symptoms/kWCRJrGAOakiZskpa97tsdSSYMu5Xguw6Ns4CcqF.png',16,'2025-02-05 13:16:43','2025-02-05 13:16:43'),(14,'Tooth ache','symptoms/nAixPusEDJV94CYBtvR40WqS3vBjh61EazjamIJM.png',23,'2025-02-05 13:21:51','2025-02-05 13:22:08'),(15,'Eye Pain','symptoms/NpH6ciE6aN6OLEyHgxtqwdbjyTUpeN4WWZ8YCoe5.png',22,'2025-02-05 13:22:49','2025-02-05 13:22:49'),(16,'Rashes','symptoms/JbeqmijT05D2fYxk7SZlbLxDgABUff8xOPoyfaOz.png',17,'2025-02-05 13:28:07','2025-02-05 13:28:07');
 /*!40000 ALTER TABLE `health_concerns` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,18 +291,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `job_batches`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `job_batches` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `total_jobs` int NOT NULL,
-  `pending_jobs` int NOT NULL,
-  `failed_jobs` int NOT NULL,
-  `failed_job_ids` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `options` mediumtext COLLATE utf8mb4_unicode_ci,
-  `cancelled_at` int DEFAULT NULL,
-  `created_at` int NOT NULL,
-  `finished_at` int DEFAULT NULL,
+  `id` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `total_jobs` int(11) NOT NULL,
+  `pending_jobs` int(11) NOT NULL,
+  `failed_jobs` int(11) NOT NULL,
+  `failed_job_ids` longtext NOT NULL,
+  `options` mediumtext DEFAULT NULL,
+  `cancelled_at` int(11) DEFAULT NULL,
+  `created_at` int(11) NOT NULL,
+  `finished_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -321,15 +322,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `jobs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `jobs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `attempts` tinyint unsigned NOT NULL,
-  `reserved_at` int unsigned DEFAULT NULL,
-  `available_at` int unsigned NOT NULL,
-  `created_at` int unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `queue` varchar(255) NOT NULL,
+  `payload` longtext NOT NULL,
+  `attempts` tinyint(3) unsigned NOT NULL,
+  `reserved_at` int(10) unsigned DEFAULT NULL,
+  `available_at` int(10) unsigned NOT NULL,
+  `created_at` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `jobs_queue_index` (`queue`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -350,11 +351,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `migrations` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -375,14 +376,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `notifications`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `notifications` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `recipient_id` bigint unsigned NOT NULL,
-  `type` enum('email','sms','push') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'email',
-  `status` enum('sent','unread','read','none') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'none',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `recipient_id` bigint(20) unsigned NOT NULL,
+  `type` enum('email','sms','push') NOT NULL DEFAULT 'email',
+  `status` enum('sent','unread','read','none') NOT NULL DEFAULT 'none',
+  `title` varchar(255) NOT NULL,
+  `content` text DEFAULT NULL,
   `sent_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -407,11 +408,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `patients`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patients` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` bigint unsigned NOT NULL,
-  `document_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `document_name` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -436,11 +437,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `payments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `payments` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` enum('om','momo') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `number` varchar(255) NOT NULL,
+  `type` enum('om','momo') NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -462,11 +463,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `prescriptions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `prescriptions` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `consultation_id` bigint unsigned NOT NULL,
-  `file_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `consultation_id` bigint(20) unsigned NOT NULL,
+  `file_url` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -490,11 +491,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `q_and_as`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `q_and_as` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `question` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `answer` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `question` text NOT NULL,
+  `answer` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -517,14 +518,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `sessions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sessions` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` bigint unsigned DEFAULT NULL,
-  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_agent` text COLLATE utf8mb4_unicode_ci,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_activity` int NOT NULL,
+  `id` varchar(255) NOT NULL,
+  `user_id` bigint(20) unsigned DEFAULT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text DEFAULT NULL,
+  `payload` longtext NOT NULL,
+  `last_activity` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `sessions_user_id_index` (`user_id`),
   KEY `sessions_last_activity_index` (`last_activity`)
@@ -537,7 +538,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('73BHKJTHMHZhKEOojlgRdu3lLtBHvxNBgO8CSDng',18,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiWURJWTNsRUlCWlBxQUcwNW9JNnh2bGdIUmRyZkw0aHZGM0U2eTFXVSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQvYWRtaW4vc3BlY2lhbHRpZXMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxODt9',1738689429),('SgoTZVuEeBHISXJXNnd3bU4YDcQdcl1cFNeNqBLl',NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiS3lUMExtcnhybXdNeGhQeWdyZklvZEtiSjFYZ2l4eXVRWTlwaW9YVSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1738685266);
+INSERT INTO `sessions` VALUES ('eH5TODWQewY1tzPGHkpn6eBfMJxZt0Qnhlg74ZOJ',NULL,'192.168.163.118','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoibEJoWHBETk9BaTRUOHAyOTFMc0RuZ1g0dUdpSGVMajR2cWpKTWpqYSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly8xOTIuMTY4LjE2My4xMzM6ODAwMC9zcGVjaWFsdGllcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1738761020),('kVoGuOlFZUqUPBPpD933O7Xujd5WW8cW5WpMiS2l',NULL,'192.168.43.189','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiYW13YmZKZVJJVWVDU0VYbmEwMHpzU2pDQlNVM0pCRndWU2hBdkd6ViI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xOTIuMTY4LjQzLjM4OjgwMDAvc3BlY2lhbHRpZXMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1738762754),('RqD2sO2iul7FCzOhPQ06bi9hqf1OUEsUZ2rX0nAz',18,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoicWIzNlVMMGN4V3dQUFdCY012eFZGRTFUOUloZlI2YkpxOGZHbXFDZSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9kYXNoYm9hcmQvYWRtaW4vc3ltcHRvbXMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxODt9',1738765688);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -547,12 +548,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `slots`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `slots` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `availability_id` bigint unsigned NOT NULL,
-  `status` enum('expired','booked','available') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'available',
-  `day` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `availability_id` bigint(20) unsigned NOT NULL,
+  `status` enum('expired','booked','available') NOT NULL DEFAULT 'available',
+  `day` varchar(255) NOT NULL,
   `start_time` time NOT NULL DEFAULT '07:49:00',
   `end_time` time NOT NULL DEFAULT '07:49:00',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -578,19 +579,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `specialties`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `specialties` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `noun` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `icon_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default_icon.png',
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `noun` varchar(255) NOT NULL,
+  `icon_url` varchar(255) NOT NULL DEFAULT 'default_icon.png',
+  `description` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `specialties_name_unique` (`name`),
   UNIQUE KEY `specialties_noun_unique` (`noun`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -599,7 +600,7 @@ CREATE TABLE `specialties` (
 
 LOCK TABLES `specialties` WRITE;
 /*!40000 ALTER TABLE `specialties` DISABLE KEYS */;
-INSERT INTO `specialties` VALUES (14,'Cardiology','Cardiologist','cardiology.svg','The medical specialty focused on diagnosing and treating heart and vascular diseases.','2025-02-04 15:35:41','2025-02-04 15:35:41'),(15,'Gastroenterology','Gastroenterologist','gastroenterology.svg','Gastroenterology is the medical specialty focused on diagnosing and treating diseases of the gastrointestinal (GI) tract, including the esophagus, stomach, intestines, liver, and pancreas','2025-02-04 15:37:18','2025-02-04 15:37:18'),(16,'Neurology','Neurologist','neurology.svg','The branch of medicine dealing with disorders of the nervous system, including the brain and spinal cord.','2025-02-04 15:38:37','2025-02-04 15:38:37'),(17,'Dermatology','Dermatologist','dermatology.svg','The specialty concerned with the diagnosis and treatment of skin, hair, and nail disorders.','2025-02-04 15:39:39','2025-02-04 15:39:39'),(18,'Nephrology','Nephrologist','nephrology.svg','Deals with kidney function and diseases, including chronic kidney disease and kidney stones.','2025-02-04 15:40:52','2025-02-04 15:40:52'),(19,'Orthopedics','Orthopedist','orthopedics.svg','The medical field focused on diagnosing and treating musculoskeletal disorders, including bones, joints, and muscles.','2025-02-04 15:41:53','2025-02-04 15:41:53'),(20,'Pediatrics','Pediatrician','pediatrics.svg','The specialty dedicated to the medical care of infants, children, and adolescents.','2025-02-04 15:43:01','2025-02-04 15:43:01'),(21,'Hematology','Hematologist','hematology.svg','Specializes in blood disorders, including anemia, clotting disorders, and cancers like leukemia.','2025-02-04 16:17:08','2025-02-04 16:17:08');
+INSERT INTO `specialties` VALUES (14,'Cardiology','Cardiologist','cardiology.svg','The medical specialty focused on diagnosing and treating heart and vascular diseases.','2025-02-04 15:35:41','2025-02-04 15:35:41'),(15,'Gastroenterology','Gastroenterologist','gastroenterology.svg','Gastroenterology is the medical specialty focused on diagnosing and treating diseases of the gastrointestinal (GI) tract, including the esophagus, stomach, intestines, liver, and pancreas','2025-02-04 15:37:18','2025-02-04 15:37:18'),(16,'Neurology','Neurologist','neurology.svg','The branch of medicine dealing with disorders of the nervous system, including the brain and spinal cord.','2025-02-04 15:38:37','2025-02-04 15:38:37'),(17,'Dermatology','Dermatologist','dermatology.svg','The specialty concerned with the diagnosis and treatment of skin, hair, and nail disorders.','2025-02-04 15:39:39','2025-02-04 15:39:39'),(18,'Nephrology','Nephrologist','nephrology.svg','Deals with kidney function and diseases, including chronic kidney disease and kidney stones.','2025-02-04 15:40:52','2025-02-04 15:40:52'),(19,'Orthopedics','Orthopedist','orthopedics.svg','The medical field focused on diagnosing and treating musculoskeletal disorders, including bones, joints, and muscles.','2025-02-04 15:41:53','2025-02-04 15:41:53'),(20,'Pediatrics','Pediatrician','pediatrics.svg','The specialty dedicated to the medical care of infants, children, and adolescents.','2025-02-04 15:43:01','2025-02-04 15:43:01'),(21,'Hematology','Hematologist','hematology.svg','Specializes in blood disorders, including anemia, clotting disorders, and cancers like leukemia.','2025-02-04 16:17:08','2025-02-04 16:17:08'),(22,'Ophthalmology','Ophthalmologist','ophthalmology.svg','Focuses on eye health, including vision disorders and eye diseases.','2025-02-05 13:19:25','2025-02-05 13:19:25'),(23,'Dentistry','Dentist','dentistry.svg','Specializes in the diagnosis, prevention, and treatment of dental and facial irregularities, often using braces or clear aligners to straighten teeth.','2025-02-05 13:20:31','2025-02-05 13:20:31'),(24,'Oral diseases','Oral disease specialist','oral diseases.svg','Oral diseases encompass a wide range of conditions that affect the mouth and surrounding structures.','2025-02-05 13:21:15','2025-02-05 13:21:15');
 /*!40000 ALTER TABLE `specialties` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -609,12 +610,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `testimonials`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `testimonials` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` bigint unsigned NOT NULL,
-  `rating` int NOT NULL DEFAULT '3',
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `rating` int(11) NOT NULL DEFAULT 3,
+  `message` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -638,11 +639,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `user_contacts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_contacts` (
-  `user_id` bigint unsigned NOT NULL,
-  `contact_id` bigint unsigned NOT NULL,
-  `value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `contact_id` bigint(20) unsigned NOT NULL,
+  `value` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`contact_id`,`value`),
@@ -669,18 +670,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gender` enum('male','female') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `age` int NOT NULL DEFAULT '0',
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `gender` enum('male','female') NOT NULL,
+  `age` int(11) NOT NULL DEFAULT 0,
+  `password` varchar(255) NOT NULL,
   `dob` date NOT NULL,
-  `Nationality` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Cameroon',
-  `city` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Yaounde',
-  `role` enum('admin','doctor','patient') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'patient',
-  `profile_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'placeholder.png',
+  `Nationality` varchar(255) NOT NULL DEFAULT 'Cameroon',
+  `city` varchar(255) NOT NULL DEFAULT 'Yaounde',
+  `role` enum('admin','doctor','patient') NOT NULL DEFAULT 'patient',
+  `profile_image` varchar(255) NOT NULL DEFAULT 'placeholder.png',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -706,4 +707,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-04 18:19:34
+-- Dump completed on 2025-02-05 15:30:41

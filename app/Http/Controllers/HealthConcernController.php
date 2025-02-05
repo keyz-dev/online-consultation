@@ -33,15 +33,15 @@ class HealthConcernController extends Controller
     public function store(StoreSymptomRequest $request)
     {
         $validated = $request->validated();
-        $svg_name = strtolower($validated['name']) . '.svg';
-        $svg_content = $validated['icon_url'];
-        
-        // save the svg to the storage disc public folder
-        Storage::disk('public')->put('symptom_icons/'.$svg_name, $svg_content);
+
+        // Save the illustrator for the symptom
+        if(isset($validated['icon_url']) && $validated['icon_url'] != null){
+            $validated['icon_url'] = $this->file_handler($request, 'icon_url', 'symptoms');
+        }
 
         HealthConcern::create([
             'name' => $validated['name'],
-            'icon_url' => $svg_name,
+            'icon_url' => $validated['icon_url'],
             'specialty_id' => $validated['specialty_id']
         ]);
 
@@ -49,7 +49,6 @@ class HealthConcernController extends Controller
             'status' => 'success',
             "message"=>"Symptom added successfully!"
         ]);
-
         return redirect()->route('dashboard.admin.symptoms');
     }
 
@@ -58,7 +57,7 @@ class HealthConcernController extends Controller
      */
     public function show(HealthConcern $healthConcern)
     {
-       
+
     }
 
     /**
@@ -66,7 +65,7 @@ class HealthConcernController extends Controller
      */
     public function edit(HealthConcern $symptom)
     {
-        $specialties = Specialty::all();    
+        $specialties = Specialty::all();
         return view('dashboard.admin.symptoms.edit', compact('symptom', 'specialties'));
     }
 
@@ -76,21 +75,19 @@ class HealthConcernController extends Controller
     public function update(StoreSymptomRequest $request, HealthConcern $symptom)
     {
         $validated = $request->validated();
-        $svg_name = strtolower($validated['name']) . '.svg';
-        $svg_content = $validated['icon_url'];
-        
+        if(isset($validated['icon_url']) && $validated['icon_url'] != null){
+            Storage::disk('public')->delete('symptoms/'.$symptom->icon_url);
+
+            $validated['icon_url'] = $this->file_handler($request, 'icon_url', 'symptoms');
+        }
         // delete the old svg file
-        Storage::disk('public')->delete('symptom_icons/'.$symptom->icon_url);
-        
-        // save the svg to the storage disc public folder
-        Storage::disk('public')->put('symptom_icons/'.$svg_name, $svg_content);
 
         $symptom->update([
             'name' => $validated['name'],
-            'icon_url' => $svg_name,
+            'icon_url' => $validated['icon_url'],
             'specialty_id' => $validated['specialty_id']
         ]);
-        
+
         session([
             'status' => 'success',
             "message"=>"Symptom has been successfully updated"
@@ -105,7 +102,7 @@ class HealthConcernController extends Controller
     public function destroy(HealthConcern $symptom)
     {
         // delete the old svg file
-        Storage::disk('public')->delete('symptom_icons/'.$symptom->icon_url);
+        Storage::disk('public')->delete('symptoms/'.$symptom->icon_url);
         $symptom->delete();
         session([
             'status' => 'success',

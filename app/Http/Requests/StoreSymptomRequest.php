@@ -24,7 +24,7 @@ class StoreSymptomRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'icon_url' => ['required', 'string', new SvgElement],
+            'icon_url' => 'required|image|mimes:jpg,png,jpeg,webp,ico,svg,jiff,avif|max:2048',
             'specialty_id' => 'required|integer',
         ];
     }
