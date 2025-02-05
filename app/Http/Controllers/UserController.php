@@ -25,12 +25,16 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request){
         DB::beginTransaction();
-        $patient = null;
 
         try{
             // extract the validated request parameters
             $validated = $request->validated();
-    
+
+            // Extract non_null values from the validated
+            $validated = array_filter($validated, function($value){
+                return !is_null($value);
+            });
+
             if(isset($validated['profile_image']) && $validated['profile_image'] != null){
                 $validated['profile_image'] = $this->file_handler($request, 'profile_image', 'profile_images');
             }
@@ -41,10 +45,10 @@ class UserController extends Controller
             $document = $validated['document'] ?? null;
 
             // Create a new user
-            $user = User::create($mass_array);    
+            $user = User::create($mass_array);
             // Get the list of contacts
             $contacts = ContactInformation::all();
-    
+
             foreach($validated as $key => $value ){
                 // get the contact information by name and extract the id, so as to insert into the user_contacts table
                 $contact = $contacts->where('name', $key)->first();
@@ -53,7 +57,7 @@ class UserController extends Controller
                 }
             }
             // The default role is the patient
-            
+
             // create a patient
             $patient = Patient::create([
                 'user_id' => $user->id,
@@ -68,14 +72,14 @@ class UserController extends Controller
                 "message"=>"User created successfully!"
             ]);
 
-            return redirect()->route('user.login');  
+            return redirect()->route('user.login');
 
         }catch  (\Exception $e){
             DB::rollBack();
             // Delete aany created images
             Storage::disk('public')->delete('profile_images/'.$user->profile_image);
             Storage::disk('public')->delete('medical_records/'.$patient->document_name);
-            
+
             return back()->withErrors(['name' => 'Error occured while creating the user.']);
         }
     }

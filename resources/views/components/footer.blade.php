@@ -11,11 +11,11 @@
 
 <footer class="w-screen bg-footer opacity-95  py-3">
     <div class="container footer flex flex-col py-4 pt-5 md:px-0 gap-5 h-full">
-        
+
         <section class="grid container grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 ">
-            <div>
+            <div class="w-full flexible flex-col ">
                 <x-logo :logo="$logo" />
-                <p class="text-[11px] text-secondary">Book appointments at super-human speed and get consulted at the confort of your home</p>
+                <p class="text-[11px] text-secondary text-center">Book appointments at super-human speed and get consulted at the confort of your home</p>
             </div>
 
             <div>
@@ -36,7 +36,7 @@
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">Specialties</a></li>
                     <li><a href="#">Doctors</a></li>
-                   
+
                 </ul>
             </div>
             <div>

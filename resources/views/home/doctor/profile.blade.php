@@ -12,27 +12,27 @@
         $name = $doctor->user->name;
         $text = 'Dr. '.$name;
     @endphp
-    <x-doctor.hero_section 
+    <x-doctor.hero_section
         :route="$name"
         :text="$text"
         :bg="$bg"
     />
-    
+
     <main class="w-full">
         {{-- Doctors display section --}}
         <section class="container pt-5 pb-20 flexible justify-center">
 
             {{-- centralize the contents but not to the full width of the container --}}
             <div class="w-full md:w-[80%] grid grid-cols-1 lg:grid-cols-2 gap-4 align-top">
-               
+
                 {{-- image div --}}
                 <div class="w-full h-auto min-h-[300px] max-h-[500px] gap-4">
                     <img src="{{asset('storage/'.$doctor->user->profile_image)}}" class="w-full h-full object-cover object-center" alt="service image">
-                    
+
                     {{-- Description --}}
                     <p class="text-sm text-secondary py-4">{{$doctor->descriptions}}</p>
                 </div>
-                
+
                 {{-- Doctor information page --}}
                 <div class="flex gap-3 items-start flex-col bg-white h-full w-full px-4">
                     <h2 class="text-3xl font-semibold">Dr. {{$doctor->user->name}}</h2>
@@ -54,7 +54,7 @@
                             <h2 class="text-secondary"> <span class="text-xl font-semibold text-primary">{{(int)$doctor->consultation_fee}} </span> CFA</h2>
                             <p class="text-secondary text-xs">Consulatin Fee</p>
                         </div>
-                        
+
                         <hr class="w-[1px] h-full bg-accent">
                         <div class="flex flex-col gap-2">
                             <span class="text-base text-accent">
@@ -119,7 +119,7 @@
                                                 $value = $contact->pivot->value;
                                                 $href = $contact->name == 'email' ? 'mailto:'.$value : ( $contact->name == 'whatsapp' ? "https://wa.me/237$value?text=I%20saw%20you%20as%20a%20doctor%20on%20Drogcine%20and%20will%20like%20to%20know%20more%20about%20you" : $value);
                                             @endphp
-                                            <a href="{{$href}}" class="default_transition text-accent hover:text-white hover:bg-accent size-[30px] rounded-full border inline-flex items-center justify-center" title="{{$contact->name}} Link">
+                                            <a href="{{$href}}" class="default_transition text-accent hover:text-white hover:bg-accent size-[30px] rounded-full border inline-flex items-center justify-center" title="{{$contact->name}} Link" target="_blank">
                                                 {!! $contact->icon_url!!}
                                             </a>
                                         @endforeach
@@ -131,7 +131,7 @@
 
                     {{-- Button to book an appointment --}}
                     <a href="" class="flex items-center gap-1 border border-line_clr w-full mt-[10px]">
-                        <x-button 
+                        <x-button
                             text="Book Appointment"
                             class="text-sm font-semibold text-secondary px-4 py-2 min-w-full min-h-fit hover:bg-accent hover:text-white"
                         >

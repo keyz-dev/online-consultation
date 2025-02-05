@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Payment;
 use App\Models\ContactInformation;
+use Illuminate\Support\Facades\Storage;
+
 
 class DoctorController extends Controller
 {
@@ -70,8 +72,14 @@ class DoctorController extends Controller
      */
     public function store(StoreDoctorRequest $request)
     {
-        return DB::transaction(function() use ($request) {
+        DB::beginTransaction();
+        try{
             $validated = $request->validated();
+
+            $validated = array_filter($validated, function($value){
+                return !is_null($value);
+            });
+
             if(isset($validated['profile_image']) && $validated['profile_image'] != ""){
                 $validated['profile_image'] = $this->file_handler($request, 'profile_image', 'profile_images');
             }
@@ -97,14 +105,21 @@ class DoctorController extends Controller
             // set the doctor payment and user ids and then create the doctor
             $doctor_info['user_id'] = $user->id;
             $doctor_info['payment_id'] = $payment->id;
-
             Doctor::create($doctor_info);
+
+            // commit the transaction if successful and redirect
+            DB::commit();
             session([
                 'status' => 'success',
                 "message"=>"Account created successfully!"
             ]);
             return redirect()->route('user.login');
-        });
+
+        }catch (\Exception $e){
+            // Rollback and delete any images if any was created
+            DB::rollBack();
+            Storage::disk('public')->delete('profile_images/'.$user->profile_image);
+        }
     }
 
     public function extract_doctor($validated){
