@@ -15,6 +15,7 @@
         Route::controller(DoctorDashboardController::class)
         ->group(function() {
             Route::get('/', 'index');
+            Route::get('/availbility', 'availabilityPage')->name('.availability');
         });
     });
 ?>

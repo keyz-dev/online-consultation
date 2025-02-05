@@ -35,7 +35,7 @@ class DoctorController extends Controller
         $doctors = Doctor::where('specialty_id', $specialty->id)->get();
         return $this->render($doctors);
     }
-    
+
     public function get_by_name(Request $request){
         $validated = $request->validate([
             'doctor_name' => 'required|string'
@@ -49,7 +49,7 @@ class DoctorController extends Controller
         $doctors = $users->map(function ($user){
             return $user->doctor;
         });
-        
+
         return $this->render($doctors);
     }
 
@@ -79,7 +79,7 @@ class DoctorController extends Controller
             $user_info = $this->extract_user($validated);
             $user_info['role'] = 'doctor';
             $user = User::create($user_info);
-    
+
             // Extract the doctor specific fields, and create a payment
             $doctor_info = $this->extract_doctor($validated);
             $payment = Payment::create([
@@ -114,7 +114,7 @@ class DoctorController extends Controller
             'descriptions',
             'license_number',
             'hospital',
-            'consultation_fee' 
+            'consultation_fee'
         ]);
         return $mass_doctor->toArray();
     }
@@ -157,46 +157,5 @@ class DoctorController extends Controller
     {
         //
     }
-    public function availabilityPage(Request $req){
-       $week_number = $req->input('week_number');
-    //    $activeDoctors = Doctor::scopeActiveAvailabilities("2")->with('user')->get(); 
-    //    dd($activeDoctors);
-    $av = Availability::all();
-    $doc = Doctor::all();
-    $users = User::all();
-    $filters = [];
-    $array = [];
-    $activeDoctors = [];
-    $response = [
-        "name" => "",
-        "city" => "",
-        "nationality" => "",
-        "profile" => "",
-    ];
-    foreach($av as $value){
-      if($value['status'] == 'active'){
-        $filters[] = $value['doctor_id'];
-      }
-    }
-    foreach($doc as $item){
-       foreach($filters as $id){
-         if($id === $item['id']){
-            $array[] = $item['user_id'];
-         }
-       }
-    }
-    foreach($users as $user){
-        foreach($array as $val){
-            if($val === $user['id']){
-              $response['name'] = $user['name'];
-              $response['city'] = $user['city'];
-              $response['nationality'] = $user['Nationality'];
-              $response['profile'] = $user['profile_image'];
-              $activeDoctors[] = $response;
-            }
-        }
-    }
-        // dd($activeDoctors);
-        return view('dashboard.doctor.availability', compact('activeDoctors'));
-    }
+
 }
