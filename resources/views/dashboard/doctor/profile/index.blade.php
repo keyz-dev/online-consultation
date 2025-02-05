@@ -12,7 +12,7 @@
 @endpush
 
 <section class="w-full flex flex-col gap-2">
-    <x-dashboard.page_url index='admin'
+    <x-dashboard.page_url index='doctor'
         page="Profile"
     />
     <div class="w-full flex items-center justify-between">

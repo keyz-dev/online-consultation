@@ -12,10 +12,16 @@
     ->name('.doctor')
     ->prefix('doctor')
     ->group(function () {
+
+        // Sidebar routes
         Route::controller(DoctorDashboardController::class)
         ->group(function() {
             Route::get('/', 'index');
-            Route::get('/availbility', 'availabilityPage')->name('.availability');
+            Route::get('/availability', 'availabilityPage')->name('.availability');
+            Route::get('/profile', 'profile')->name('.profile');
+            Route::get('/appointments', 'appointments')->name('.appointments');
+            Route::get('/chats', 'chats')->name('.chats');
+            Route::get('/calls', 'calls')->name('.calls');
         });
     });
 ?>

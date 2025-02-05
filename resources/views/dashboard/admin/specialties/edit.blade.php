@@ -5,7 +5,7 @@
 
 @section('content')
 <section class="w-full flex flex-col gap-2">
-    <x-dashboard.page_url 
+    <x-dashboard.page_url index='admin'
         page="Edit_specialty"
     />
     <form action="{{route('dashboard.admin.specialty.update', $specialty)}}" method="POST" class="h-full py-4 w-full justify-center flex gap-4">

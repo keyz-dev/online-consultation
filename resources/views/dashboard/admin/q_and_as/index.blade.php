@@ -13,13 +13,13 @@
 @endpush
 
 <section class="w-full flex flex-col gap-2">
-    <x-dashboard.page_url 
+    <x-dashboard.page_url index='admin'
         page="Q and As"
     />
     <div class="w-full flex items-center justify-between">
         <h1 class="text-[25px] text-primary font-medium">Q and As</h1>
         <a href="{{route('dashboard.admin.q_and_a.create')}}" class="flex items-center gap-2 px-3 py-1 text-white rounded-md">
-            <x-button 
+            <x-button
                 text="Add Block"
                 icon='<i class="fas fa-plus"></i>'
                 class="btn-secondarybtn"
@@ -33,12 +33,12 @@
                 @php
                     $filter_icon = file_get_contents(public_path('icons/filter.svg'))
                 @endphp
-                <x-button 
+                <x-button
                     text="Filter"
                     :icon="$filter_icon"
                     class="bg-secondary-bg min-h-[40px] rounded-lg min-w-fit"
                 />
-                <x-search 
+                <x-search
                     name="questions_search"
                     placeholder="Search questions"
                     class="border-none outline-none min-w-[320px] placeholder:text-slate-400 placeholder:text-sm"
@@ -51,11 +51,11 @@
                     $list_icon = file_get_contents(public_path('icons/list.svg'))
                 @endphp
 
-                <x-button 
+                <x-button
                     :icon="$list_icon"
                     class="min-h-fit min-w-fit p-2 hover:bg-secondary-bg hover:opacity-80"
                 />
-               <x-button 
+               <x-button
                     :icon="$grid_icon"
                     class="min-h-fit min-w-fit p-2 bg-secondary-bg hover:opacity-80"
                />
@@ -76,7 +76,7 @@
                         <a href="{{route('dashboard.admin.q_and_a.delete', $q_and_a)}}" class="px-4 py-1 bg-warning-bg hover:bg-opacity-50">Delete</a>
                     </div>
                 </div>
-                
+
             @empty
                 <div class="w-full col-span-4 h-[100px] flex items-center justify-center bg-warning-bg text-secondary">
                     You have no Q and A Block yet

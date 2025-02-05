@@ -13,13 +13,13 @@
 @endpush
 
 <section class="w-full flex flex-col gap-2">
-    <x-dashboard.page_url 
+    <x-dashboard.page_url index='admin'
         page="Specialties"
     />
     <div class="w-full flex items-center justify-between">
         <h1 class="text-[25px] text-primary font-medium">Specialties</h1>
         <a href="{{route('dashboard.admin.specialty.create')}}" class="flex items-center gap-2 px-3 py-1 text-white rounded-md">
-            <x-button 
+            <x-button
                 text="Add Specialty"
                 icon='<i class="fas fa-plus"></i>'
                 class="btn-secondarybtn"
@@ -33,12 +33,12 @@
                 @php
                     $filter_icon = file_get_contents(public_path('icons/filter.svg'))
                 @endphp
-                <x-button 
+                <x-button
                     text="Filter"
                     :icon="$filter_icon"
                     class="bg-secondary-bg min-h-[40px] rounded-lg min-w-fit"
                 />
-                <x-search 
+                <x-search
                     name="specialty_search"
                     placeholder="Search Specialties"
                     class=""
@@ -52,11 +52,11 @@
                     $list_icon = file_get_contents(public_path('icons/list.svg'))
                 @endphp
 
-                <x-button 
+                <x-button
                     :icon="$list_icon"
                     class="min-h-fit min-w-fit p-2 bg-secondary-bg hover:opacity-80"
                 />
-               <x-button 
+               <x-button
                     :icon="$grid_icon"
                     class="min-h-fit min-w-fit p-2 hover:bg-secondary-bg hover:opacity-80"
                />
@@ -77,7 +77,7 @@
                 </thead>
                 <tbody>
                     @foreach ($specialties as $specialty)
-                       
+
                         <tr class="border-b-2 border-b-border_clr">
                             <td class="py-2 name-cell">
                                 <div class="flex items-center gap-3">
@@ -94,7 +94,7 @@
                             <td class="">
                                 <span>{{$specialty->doctors_count}}</span>
                             </td>
-                            
+
                             <td class="text-xl text-secondary">
                                 <div class="relative action_parent group">
                                     <i class="fas fa-ellipsis-h"></i>

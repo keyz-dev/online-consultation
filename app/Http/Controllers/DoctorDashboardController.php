@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Availability;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorDashboardController extends Controller
 {
@@ -53,6 +54,31 @@ class DoctorDashboardController extends Controller
             }
         }
             // dd($activeDoctors);
-        return view('dashboard.doctor.availability', compact('activeDoctors'));
-     }
+        return view('dashboard.doctor.availability.index', compact('activeDoctors'));
+    }
+
+    public function profile(){
+        // Get the doctor information
+        $user = Auth::user();
+        $doctor = Doctor::where('user_id', $user->id)->first();
+        return view('dashboard.doctor.profile.index', compact('doctor'));
+    }
+    public function appointments(){
+        // Get the doctor information
+        $user = Auth::user();
+        $doctor = Doctor::where('user_id', $user->id)->first();
+        return view('dashboard.doctor.appointments.index', compact('doctor'));
+    }
+    public function chats(){
+        // Get the doctor information
+        $user = Auth::user();
+        $doctor = Doctor::where('user_id', $user->id)->first();
+        return view('dashboard.doctor.chats.index', compact('doctor'));
+    }
+    public function calls(){
+        // Get the doctor information
+        $user = Auth::user();
+        $doctor = Doctor::where('user_id', $user->id)->first();
+        return view('dashboard.doctor.calls.index', compact('doctor'));
+    }
 }

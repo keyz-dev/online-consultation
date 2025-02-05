@@ -6,7 +6,6 @@
             text-decoration: underline;
         }
     }
-
 </style>
 
 <footer class="w-screen bg-footer opacity-95  py-3">

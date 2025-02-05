@@ -1,7 +1,6 @@
 @extends('layout.dashboard')
 
 @section('content')
-
 @push('styles')
     <style>
         .name-cell svg{
@@ -13,12 +12,12 @@
 @endpush
 
 <section class="w-full flex flex-col gap-2">
-    <x-dashboard.page_url index='admin'
-        page="Dashboard"
+    <x-dashboard.page_url index='doctor'
+        page="Calls"
     />
+    <div class="w-full flex items-center justify-between">
+        <h1 class="text-[25px] text-primary font-medium">Calls</h1>
 
-    <main class="w-full h-full bg-white p-2 divide-y-2">
+    </div>
 
-    </main>
-</section>
 @endsection

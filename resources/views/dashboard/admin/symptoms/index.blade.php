@@ -11,7 +11,7 @@
 @endpush
 
 <section class="w-full flex flex-col gap-2">
-    <x-dashboard.page_url
+    <x-dashboard.page_url index='admin'
         page="Symptoms"
     />
     <div class="w-full flex items-center justify-between">

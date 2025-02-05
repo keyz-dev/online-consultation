@@ -10,7 +10,7 @@
             title="Home"
             svg="home" />
         <x-dashboard.sidebar_list
-            route="home.index"
+            route="dashboard.doctor.appointments"
             title="My Appointment"
             svg="patient" />
         <x-dashboard.sidebar_list
@@ -18,15 +18,15 @@
             title="Availability"
             svg="doctor" />
         <x-dashboard.sidebar_list
-            route="home.index"
+            route="dashboard.doctor.chats"
             title="Chats"
             svg="error" />
         <x-dashboard.sidebar_list
-            route="home.index"
+            route="dashboard.doctor.calls"
             title="Calls"
             svg="lock_open" />
         <x-dashboard.sidebar_list
-            route="home.index"
+            route="dashboard.doctor.profile"
             title="Profile"
             svg="profile" />
     </ul>
