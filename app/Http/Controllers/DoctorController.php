@@ -154,7 +154,9 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        return view('dashboard.doctor.profile.edit', compact('doctor'));
+        $contacts = $doctor->user->contacts;
+        $specialties = Specialty::all();
+        return view('dashboard.doctor.profile.edit', compact('doctor', 'contacts', 'specialties'));
     }
 
     /**
@@ -171,7 +173,11 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
-        dd($doctor);
+        // Delete the images related to the doctor
+        Storage::disk('public')->delete('profile_images/'.$doctor->user->profile_image);
+        $doctor->delete();
+        session()->invalidate();
+        return redirect()->route('home.index');
     }
 
 }

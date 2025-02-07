@@ -35,7 +35,7 @@
         <section class="w-full">
             <h2 class="text-sm text-primary font-semibold py-2">Personal Information</h2>
             <section class="w-full flex flex-col md:flex-row divide-x-2 bg-white p-2">
-                <div class="w-1/2 flexible flex-col md:flex-row">
+                <div class="w-1/2 flexible flex-col md:flex-row ">
                     <img src="{{asset('storage/'.$doctor->user->profile_image)}}" class="size-[200px] object-cover object-center" alt="service image">
                     <div class="flex flex-col">
                         <h2 class="text-xl font-semibold mb-2">Dr. {{$doctor->user->name}}</h2>

@@ -59,4 +59,32 @@ export default {
         },
     },
     plugins: [],
+    purge: {
+        content: [
+            './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+            './storage/framework/views/*.php',
+            './resources/**/*.blade.php',
+            './resources/**/*.js',
+            './resources/**/*.vue',
+        ],
+        options: {
+            safelist: [
+                'bg-accent',
+                'bg-accent-light',
+                'bg-primary',
+                'bg-primary-bg',
+                'bg-secondary',
+                'bg-secondary-bg',
+                'bg-warning',
+                'bg-warning-bg',
+                'bg-success',
+                'bg-success-bg',
+                'bg-error',
+                'bg-error-bg',
+                'bg-pending',
+                'bg-pending-bg',
+                'bg-footer',
+            ],
+        },
+    },
 };

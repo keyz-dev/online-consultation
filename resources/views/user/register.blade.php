@@ -33,7 +33,7 @@
                 </a>
                 <hr class="w-[100px] h-[2px] mx-2 border-none bg-line_clr">
                 <a href="#form-section-2">
-                    <span>2</span> 
+                    <span>2</span>
                 </a>
             </div>
 
@@ -45,14 +45,13 @@
                     <section class="flex basis-full flex-col gap-4 items-center sm:p-2" id="form-section-1">
                         <x-user_form.register.form_one />
                     </section>
-    
+
                     {{-- Second form --}}
                     <section class="flex flex-col basis-full gap-4 items-center sm:p-2" id="form-section-2">
                         <x-user_form.register.form_two />
-                            
                     </section>
                 </div>
-            </div>    
+            </div>
         </div>
     </form>
 </section>

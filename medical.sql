@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.4.27-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: medical
 -- ------------------------------------------------------
--- Server version	10.4.32-MariaDB
+-- Server version	10.4.27-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -213,7 +213,7 @@ CREATE TABLE `doctors` (
   CONSTRAINT `fk_doc_payment` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_doc_specialty` FOREIGN KEY (`specialty_id`) REFERENCES `specialties` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_doc_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +222,7 @@ CREATE TABLE `doctors` (
 
 LOCK TABLES `doctors` WRITE;
 /*!40000 ALTER TABLE `doctors` DISABLE KEYS */;
-INSERT INTO `doctors` VALUES (4,30,23,6,15000.00,12,0,'5639','Hopital psychiatrique de Yaounde','Humility is the key to greatness.','2025-02-05 13:39:11','2025-02-05 13:39:11');
+INSERT INTO `doctors` VALUES (4,30,23,6,15000.00,12,0,'5639','Hopital psychiatrique de Yaounde','Humility is the key to greatness.','2025-02-05 13:39:11','2025-02-05 13:39:11'),(5,32,16,8,8000.00,9,0,'Kit34xau09','Joseph Merrick Baptist Hospital','Seeing is believing. Having gotten the opportunity to see the great and mighty things that God can do in the life of an individual, I strongly believe that Jesus is Lord','2025-02-05 17:41:47','2025-02-05 17:41:47'),(6,33,15,9,4000.00,3,0,'Qwsyu21hy','L\'hopital General de Etoug-Ebe','I never really imagined my self in a place where i could be a reason for someone\'s smile. This God is truly Great','2025-02-07 01:51:05','2025-02-07 01:51:05'),(7,34,14,10,12500.00,5,0,'Bit781Maopy','Yaounde District Hospital Ekoumdom','One never knows why he or she was born, they just get to hope that they\'ll discover it one day','2025-02-07 01:59:24','2025-02-07 01:59:24');
 /*!40000 ALTER TABLE `doctors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -446,7 +446,7 @@ CREATE TABLE `payments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -455,7 +455,7 @@ CREATE TABLE `payments` (
 
 LOCK TABLES `payments` WRITE;
 /*!40000 ALTER TABLE `payments` DISABLE KEYS */;
-INSERT INTO `payments` VALUES (6,'670215621','momo','2025-02-05 13:39:11','2025-02-05 13:39:11');
+INSERT INTO `payments` VALUES (6,'670215621','momo','2025-02-05 13:39:11','2025-02-05 13:39:11'),(8,'670084835','momo','2025-02-05 17:41:47','2025-02-05 17:41:47'),(9,'680614641','om','2025-02-07 01:51:05','2025-02-07 01:51:05'),(10,'682980313','momo','2025-02-07 01:59:24','2025-02-07 01:59:24');
 /*!40000 ALTER TABLE `payments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -540,7 +540,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('DPcdaZ5iTFSLhDWrtrF4Mwj6h1FSexLHHT8CGLjr',30,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoic1pBemJqOGxlZ3JEVlVjRkx5d3FqcTVKeWh3ZlJpMWpabXJ6SXp6eiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjMwO30=',1738767273),('eH5TODWQewY1tzPGHkpn6eBfMJxZt0Qnhlg74ZOJ',NULL,'192.168.163.118','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoibEJoWHBETk9BaTRUOHAyOTFMc0RuZ1g0dUdpSGVMajR2cWpKTWpqYSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly8xOTIuMTY4LjE2My4xMzM6ODAwMC9zcGVjaWFsdGllcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1738761020),('kVoGuOlFZUqUPBPpD933O7Xujd5WW8cW5WpMiS2l',NULL,'192.168.43.189','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiYW13YmZKZVJJVWVDU0VYbmEwMHpzU2pDQlNVM0pCRndWU2hBdkd6ViI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xOTIuMTY4LjQzLjM4OjgwMDAvc3BlY2lhbHRpZXMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1738762754);
+INSERT INTO `sessions` VALUES ('gBrKYHa7HYSXlxrDkRljAbGelJFEvq3uO5h8v9pK',27,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:134.0) Gecko/20100101 Firefox/134.0','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiaDl2bE42a3kyWU9NS0VTczE1a0JtRHBhbzhOSVhvajN6MFM2Unp4YSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC91c2VyL2xvZ2luIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjc7fQ==',1738897216),('t5tQff8XH1Z2eZFr1yph17lG94t6GtyBRQnMp8he',NULL,'192.168.43.189','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSlVGcUxPck1xNzBUTFFUQlpCQnh0ZkROOGNjb05udlQzUm12REs5QiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHA6Ly8xOTIuMTY4LjQzLjE4MDo4MDAwL2RvY3Rvci9zcGVjaWFsdHkvMjMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1738895623);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -662,7 +662,7 @@ CREATE TABLE `user_contacts` (
 
 LOCK TABLES `user_contacts` WRITE;
 /*!40000 ALTER TABLE `user_contacts` DISABLE KEYS */;
-INSERT INTO `user_contacts` VALUES (30,1,'620367221','2025-02-05 13:39:11','2025-02-05 13:39:11'),(27,1,'620913342','2025-02-04 10:20:42','2025-02-04 10:20:42'),(29,1,'670203723','2025-02-04 10:47:04','2025-02-04 10:47:04'),(25,1,'670809020','2025-02-04 09:58:30','2025-02-04 09:58:30'),(26,1,'671652318','2025-02-04 10:09:53','2025-02-04 10:09:53'),(24,1,'671893214','2025-02-04 09:46:05','2025-02-04 09:46:05'),(28,1,'672132891','2025-02-04 10:30:59','2025-02-04 10:30:59'),(18,1,'682980313','2025-02-04 06:22:32','2025-02-04 06:22:32'),(22,1,'698823257','2025-02-04 09:18:03','2025-02-04 09:18:03'),(30,2,'620367221','2025-02-05 13:39:11','2025-02-05 13:39:11'),(18,3,'afanyuys@gmail.com','2025-02-04 06:22:32','2025-02-04 06:22:32'),(30,3,'brayant@gmail.com','2025-02-05 13:39:11','2025-02-05 13:39:11'),(29,3,'elegance@gmail.com','2025-02-04 10:47:04','2025-02-04 10:47:04'),(27,3,'global@gmail.com','2025-02-04 10:20:42','2025-02-04 10:20:42'),(26,3,'keyz@gmail.com','2025-02-04 10:09:53','2025-02-04 10:09:53'),(25,3,'kouna@gmail.com','2025-02-04 09:58:30','2025-02-04 09:58:30'),(24,3,'ran@gmail.com','2025-02-04 09:46:05','2025-02-04 09:46:05'),(28,3,'test@gmail.com','2025-02-04 10:30:59','2025-02-04 10:30:59'),(22,3,'zali@gmail.com','2025-02-04 09:18:03','2025-02-04 09:18:03'),(30,4,'620367221','2025-02-05 13:39:11','2025-02-05 13:39:11'),(27,4,'620913342','2025-02-04 10:20:42','2025-02-04 10:20:42'),(18,4,'655955186','2025-02-04 06:22:32','2025-02-04 06:22:32'),(29,4,'670203723','2025-02-04 10:47:04','2025-02-04 10:47:04'),(25,4,'670608312','2025-02-04 09:58:30','2025-02-04 09:58:30'),(26,4,'671652318','2025-02-04 10:09:53','2025-02-04 10:09:53'),(24,4,'671893214','2025-02-04 09:46:05','2025-02-04 09:46:05'),(28,4,'672132891','2025-02-04 10:30:59','2025-02-04 10:30:59'),(22,4,'698823257','2025-02-04 09:18:03','2025-02-04 09:18:03'),(30,5,'https://web.facebook.com/Meganeofficial/?_rdc=1&_rdr#','2025-02-05 13:39:11','2025-02-05 13:39:11');
+INSERT INTO `user_contacts` VALUES (30,1,'620367221','2025-02-05 13:39:11','2025-02-05 13:39:11'),(27,1,'620913342','2025-02-04 10:20:42','2025-02-04 10:20:42'),(29,1,'670203723','2025-02-04 10:47:04','2025-02-04 10:47:04'),(25,1,'670809020','2025-02-04 09:58:30','2025-02-04 09:58:30'),(26,1,'671652318','2025-02-04 10:09:53','2025-02-04 10:09:53'),(24,1,'671893214','2025-02-04 09:46:05','2025-02-04 09:46:05'),(28,1,'672132891','2025-02-04 10:30:59','2025-02-04 10:30:59'),(33,1,'680614641','2025-02-07 01:51:05','2025-02-07 01:51:05'),(32,1,'681537516','2025-02-05 17:41:47','2025-02-05 17:41:47'),(18,1,'682980313','2025-02-04 06:22:32','2025-02-04 06:22:32'),(34,1,'691443727','2025-02-07 01:59:24','2025-02-07 01:59:24'),(22,1,'698823257','2025-02-04 09:18:03','2025-02-04 09:18:03'),(30,2,'620367221','2025-02-05 13:39:11','2025-02-05 13:39:11'),(34,2,'676177173','2025-02-07 01:59:24','2025-02-07 01:59:24'),(33,2,'680614641','2025-02-07 01:51:05','2025-02-07 01:51:05'),(18,3,'afanyuys@gmail.com','2025-02-04 06:22:32','2025-02-04 06:22:32'),(30,3,'brayant@gmail.com','2025-02-05 13:39:11','2025-02-05 13:39:11'),(29,3,'elegance@gmail.com','2025-02-04 10:47:04','2025-02-04 10:47:04'),(27,3,'global@gmail.com','2025-02-04 10:20:42','2025-02-04 10:20:42'),(26,3,'keyz@gmail.com','2025-02-04 10:09:53','2025-02-04 10:09:53'),(34,3,'keyzglobal0313@gmail.com','2025-02-07 01:59:24','2025-02-07 01:59:24'),(25,3,'kouna@gmail.com','2025-02-04 09:58:30','2025-02-04 09:58:30'),(33,3,'megane@gmail.com','2025-02-07 01:51:05','2025-02-07 01:51:05'),(32,3,'njeba@gmail.com','2025-02-05 17:41:47','2025-02-05 17:41:47'),(24,3,'ran@gmail.com','2025-02-04 09:46:05','2025-02-04 09:46:05'),(28,3,'test@gmail.com','2025-02-04 10:30:59','2025-02-04 10:30:59'),(22,3,'zali@gmail.com','2025-02-04 09:18:03','2025-02-04 09:18:03'),(30,4,'620367221','2025-02-05 13:39:11','2025-02-05 13:39:11'),(27,4,'620913342','2025-02-04 10:20:42','2025-02-04 10:20:42'),(18,4,'655955186','2025-02-04 06:22:32','2025-02-04 06:22:32'),(29,4,'670203723','2025-02-04 10:47:04','2025-02-04 10:47:04'),(25,4,'670608312','2025-02-04 09:58:30','2025-02-04 09:58:30'),(26,4,'671652318','2025-02-04 10:09:53','2025-02-04 10:09:53'),(24,4,'671893214','2025-02-04 09:46:05','2025-02-04 09:46:05'),(28,4,'672132891','2025-02-04 10:30:59','2025-02-04 10:30:59'),(34,4,'676177173','2025-02-07 01:59:24','2025-02-07 01:59:24'),(33,4,'680614641','2025-02-07 01:51:05','2025-02-07 01:51:05'),(32,4,'681537516','2025-02-05 17:41:47','2025-02-05 17:41:47'),(22,4,'698823257','2025-02-04 09:18:03','2025-02-04 09:18:03'),(30,5,'https://web.facebook.com/Meganeofficial/?_rdc=1&_rdr#','2025-02-05 13:39:11','2025-02-05 13:39:11');
 /*!40000 ALTER TABLE `user_contacts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -687,7 +687,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -696,7 +696,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (18,'Afanyuy Caleb','male',0,'$2y$12$yduJtJNtOevlJ5oJuMFUWe4u9bWSi3zSs8k9rnIj61iRiEMRBFYey','2004-04-01','Cameroon','Yaounde','admin','profile_images/qaXCAwyX8CkRrlm6gY8X8alWdfMGVgT3m54XZhM6.jpg','2025-02-04 06:22:32','2025-02-04 06:22:32'),(22,'Jonathan Zali','male',0,'$2y$12$eHUIQDGZWVUlXkh9bW4tiOfpXzr2lChbu5i75EYQ/CwA9O508.g3.','1997-07-12','China','Hong Kong','patient','profile_images/5rNbSm6MFwWYbG5mCSWkunsWzkJ8cqW6JTkHZZWc.jpg','2025-02-04 09:18:03','2025-02-04 09:18:03'),(24,'Ransom Benedict','male',0,'$2y$12$FIYXIovt3a8v1tCjA3dJWehju/VsRQ.XIhkkek21V5SC./mvBXk4e','2000-06-12','Nigeria','Portacourt','patient','profile_images/PEUk3N1gD5jf8wxQFyEFtaVrPtRi848CKfo3Vefn.jpg','2025-02-04 09:46:05','2025-02-04 09:46:05'),(25,'kouna de kouna','female',0,'$2y$12$72dTFcWZKe3//Dyrvv0lY.IhI.84wAtk7Rlt186pRY.yz/v0kZaPG','1943-12-06','Britain','Mystic Falls','patient','profile_images/baAsbDan7f9OgytzQGV0Sehr1vsr8SS2BRYtQ6ki.jpg','2025-02-04 09:58:30','2025-02-04 09:58:30'),(26,'keyz','male',0,'$2y$12$FeLmc4DdJ0HRYS4MIDk7LeYzdNuPUZc/xylpy32fKUK1Khx0HK6me','2001-03-12','Germany','Benin','patient','profile_images/8gig6GyspZVkLxfA0LkRJUTkICSwwua81x2Crrhs.jpg','2025-02-04 10:09:53','2025-02-04 10:09:53'),(27,'global','male',0,'$2y$12$f9nDMGZd4Tf50Oj74.g0ruUU.LwoslZZiduH15K5j1nOdxSv3t7Le','2001-03-12','Cameroon','Bamenda','patient','profile_images/XOAcwvkR8iFMU9U3t4Yc3EpzRpG4AmolGqR1cF0E.jpg','2025-02-04 10:20:42','2025-02-04 10:20:42'),(28,'Test patient','female',0,'$2y$12$ZdY25nujDKHQufIhwN8BvusIyTBK9V4KaMxPQ9NfvBLo8SSgk6.O2','2010-02-06','country','city','patient','profile_images/SP8KOcvrVovciYKRaWmXvMdPGDOoKWvLLhAyau6W.jpg','2025-02-04 10:30:59','2025-02-04 10:30:59'),(29,'Mc Elegance','female',0,'$2y$12$6tUXLDgEUzAzsKjIqqGcVuaP/0S5nFmFbV0jeFnZv4Ho3Rz8EEG5q','1990-03-12','UK','wellington','patient','profile_images/nggtFX2TwzaIn5P9XEa4LiRI3Uf9BMGgQe7R9pAi.jpg','2025-02-04 10:47:04','2025-02-04 10:47:04'),(30,'Brayant James','male',0,'$2y$12$DmV.oUTPoaqVGr/R7wMYsOsMHQSFUUixPHc5bLSV5XdhFMyAEqJn6','1974-03-12','Ivory Coast','Abidjan','doctor','profile_images/sZ31hpXZ2GQmUm3jIjbqQlueySHmMrLSvdnAjCNj.jpg','2025-02-05 13:39:11','2025-02-05 13:39:11');
+INSERT INTO `users` VALUES (18,'Afanyuy Caleb','male',0,'$2y$12$yduJtJNtOevlJ5oJuMFUWe4u9bWSi3zSs8k9rnIj61iRiEMRBFYey','2004-04-01','Cameroon','Yaounde','admin','profile_images/qaXCAwyX8CkRrlm6gY8X8alWdfMGVgT3m54XZhM6.jpg','2025-02-04 06:22:32','2025-02-04 06:22:32'),(22,'Jonathan Zali','male',0,'$2y$12$eHUIQDGZWVUlXkh9bW4tiOfpXzr2lChbu5i75EYQ/CwA9O508.g3.','1997-07-12','China','Hong Kong','patient','profile_images/5rNbSm6MFwWYbG5mCSWkunsWzkJ8cqW6JTkHZZWc.jpg','2025-02-04 09:18:03','2025-02-04 09:18:03'),(24,'Ransom Benedict','male',0,'$2y$12$FIYXIovt3a8v1tCjA3dJWehju/VsRQ.XIhkkek21V5SC./mvBXk4e','2000-06-12','Nigeria','Portacourt','patient','profile_images/PEUk3N1gD5jf8wxQFyEFtaVrPtRi848CKfo3Vefn.jpg','2025-02-04 09:46:05','2025-02-04 09:46:05'),(25,'kouna de kouna','female',0,'$2y$12$72dTFcWZKe3//Dyrvv0lY.IhI.84wAtk7Rlt186pRY.yz/v0kZaPG','1943-12-06','Britain','Mystic Falls','patient','profile_images/baAsbDan7f9OgytzQGV0Sehr1vsr8SS2BRYtQ6ki.jpg','2025-02-04 09:58:30','2025-02-04 09:58:30'),(26,'keyz','male',0,'$2y$12$FeLmc4DdJ0HRYS4MIDk7LeYzdNuPUZc/xylpy32fKUK1Khx0HK6me','2001-03-12','Germany','Benin','patient','profile_images/8gig6GyspZVkLxfA0LkRJUTkICSwwua81x2Crrhs.jpg','2025-02-04 10:09:53','2025-02-04 10:09:53'),(27,'global','male',0,'$2y$12$f9nDMGZd4Tf50Oj74.g0ruUU.LwoslZZiduH15K5j1nOdxSv3t7Le','2001-03-12','Cameroon','Bamenda','patient','profile_images/XOAcwvkR8iFMU9U3t4Yc3EpzRpG4AmolGqR1cF0E.jpg','2025-02-04 10:20:42','2025-02-04 10:20:42'),(28,'Test patient','female',0,'$2y$12$ZdY25nujDKHQufIhwN8BvusIyTBK9V4KaMxPQ9NfvBLo8SSgk6.O2','2010-02-06','country','city','patient','profile_images/SP8KOcvrVovciYKRaWmXvMdPGDOoKWvLLhAyau6W.jpg','2025-02-04 10:30:59','2025-02-04 10:30:59'),(29,'Mc Elegance','female',0,'$2y$12$6tUXLDgEUzAzsKjIqqGcVuaP/0S5nFmFbV0jeFnZv4Ho3Rz8EEG5q','1990-03-12','UK','wellington','patient','profile_images/nggtFX2TwzaIn5P9XEa4LiRI3Uf9BMGgQe7R9pAi.jpg','2025-02-04 10:47:04','2025-02-04 10:47:04'),(30,'Brayant James','male',0,'$2y$12$DmV.oUTPoaqVGr/R7wMYsOsMHQSFUUixPHc5bLSV5XdhFMyAEqJn6','1974-03-12','Ivory Coast','Abidjan','doctor','profile_images/sZ31hpXZ2GQmUm3jIjbqQlueySHmMrLSvdnAjCNj.jpg','2025-02-05 13:39:11','2025-02-05 13:39:11'),(32,'Njeba Aiesha','female',0,'$2y$12$2O0d.bw67lN80Vr7zWDuk.GcOKju/hF.SN56PkmvZYjs/dVdOD20a','1988-06-16','Cameroon','Ndu','doctor','profile_images/PUgLp5qhu5TeFteIBX4sOttvfvhq6n5xAuq0TlfC.png','2025-02-05 17:41:47','2025-02-05 17:41:47'),(33,'Djiane Megane','female',0,'$2y$12$A33f0qyh6/I9vnQu7qxQbOyqC5Ejoq5NOj1rwWYRM9XPX7EdkhBIe','2004-03-15','Ivory Coast','Abidjan','doctor','profile_images/L3O6IENUwnpe1lvt38net0hFsyvi9NUSOzsZUrIq.webp','2025-02-07 01:51:05','2025-02-07 01:51:05'),(34,'Keyz Global','male',0,'$2y$12$UxY9JUrncXsTN9JOsoqSxeeO6Iq/PRnAyY0vQhdvi7ow8obSYp0pC','2004-01-12','Cameroon','Yaounde','doctor','profile_images/TxkKKbus0kfdtXqtm1npGHRdwxOuVWgBaj3xpV0C.png','2025-02-07 01:59:24','2025-02-07 01:59:24');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -709,4 +709,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-05 15:56:12
+-- Dump completed on 2025-02-07  4:01:37

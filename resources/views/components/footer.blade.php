@@ -70,7 +70,7 @@
         </section>
 
         <hr class="border border-gray-300">
-        <section class="flex flex-col sm:flex-row items-start sm:items-center text-gray-400 text-sm justify-between gap-2 sm:gap-auto">
+        <section class="flex flex-col sm:flex-row items-center text-gray-400 text-sm justify-between gap-2 sm:gap-auto">
             <p>&copy; 2022 My Website. All rights reserved.</p>
             <div class="flex gap-3 items-center">
                 <a href="https://www.facebook.com/profile.php?id=100089952266984" target="_blank" title="facebook">
