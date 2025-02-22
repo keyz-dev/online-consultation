@@ -102,6 +102,7 @@ class UserController extends Controller
             // verify if the request is for booking an appointment
             if (session()->has('appointment_request')){
                 // redirect to the booking appointment page
+                return redirect()->route('home.doctors');
             }
             if($user->role == "admin"){
                 return redirect()->route('dashboard.admin');

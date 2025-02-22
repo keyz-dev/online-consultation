@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
 
 class AvailabilityController extends Controller
 {
@@ -15,8 +18,23 @@ class AvailabilityController extends Controller
      */
     public function index()
     {
-        // Fetch all and display the availability status and data of the doctor
-        return view('dashboard.doctor.availability.index');
+        // Fetch all and display the availability status and data of the doctor for the current week and for the next week
+        $currentWeekNumber = Carbon::now()->weekOfYear;
+
+        $doctor = Auth::user()->doctor;
+        $weekAvailability = $doctor->availabilities();
+        $currentWeekAvailability = $weekAvailability->where('week_number', $currentWeekNumber)->first();
+        $nextWeekAvailability = $weekAvailability->where('week_number', $currentWeekNumber + 1)->first();
+
+        $cur_id = $currentWeekAvailability->id ?? null;
+
+        // Convert slots arrays to Collections and group by 'day'
+        $currentWeekSlots = collect($currentWeekAvailability?->slots ?? [])->groupBy('day') ?? new Collection();
+        $nextWeekSlots = collect($nextWeekAvailability?->slots ?? [])->groupBy('day') ?? new Collection();
+
+        // Debugging (optional)
+        
+        return view('dashboard.doctor.availability.index', compact('currentWeekAvailability','nextWeekAvailability', 'currentWeekSlots', 'nextWeekSlots'));
     }
 
     /**
@@ -47,16 +65,61 @@ class AvailabilityController extends Controller
 
         // Custom validation for combined hour range
         $this->validateCombinedHourRange($validatedData);
-        dd($validatedData);
 
+        // Begin the DB operations
+        DB::beginTransaction();
 
-        // Process the validated data
-        $days = $validatedData['days'];
-        $duration = $validatedData['duration'];
-        $startHour = $validatedData['start_hour'];
-        $endHour = $validatedData['end_hour'];
+        try{
+            // Process the validated data
+            $days = $validatedData['days'];
+            $duration = (int)$validatedData['duration'];
+            $startHour = $validatedData['start_hour'];
+            $endHour = $validatedData['end_hour'];
+            $currentWeekNumber = (int)Carbon::now()->weekOfYear;
 
-        dd($days, $duration, $startHour, $endHour);
+            // Fetch the doctor
+            $doctor = Auth::user()->doctor;
+
+            // Create the availability
+            $availability = Availability::create([
+                'doctor_id' => $doctor->id,
+                'status' => 'active',
+                'week_number' => $currentWeekNumber
+            ]);
+
+            //Use the availability ID to create the various slots
+            foreach ($days as $day){
+                $start = Carbon::createFromFormat('H:i', $startHour);
+                $end = Carbon::createFromFormat('H:i', $endHour);
+
+                while($start->lte($end)){
+                    $availability->slots()->create([
+                        'day' => $day,
+                        'start_time' => $start->format('H:i'),
+                        'end_time' => $start->addMinutes($duration)->format('H:i'),
+                        'status' => 'available'
+                    ]);
+
+                    // Could add some resting time between the sessions
+                    // $start->addMinutes($duration);
+                }
+            }
+            // commit the changes made to the DB
+            DB::commit();
+
+            session([
+                'status' => 'success',
+                "message"=>"Availability set successfully"
+            ]);
+            return redirect()->route('dashboard.doctor.availability');
+
+        }catch (\Exception $e){
+            DB::rollBack();
+
+            dd("An error occurred: ".$e->getMessage());
+            return back()->withErrors(['combined_time_range' => 'There was an error setting the availability']);
+        }
+
     }
 
     protected function validateCombinedHourRange(array $data){

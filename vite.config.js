@@ -11,14 +11,14 @@ export default defineConfig({
     build: {
         outDir: 'public/build', // Adjust as needed
     },
-    server: {
-        host: '0.0.0.0',
-        port: 5173,
-        strictPort: true,
-        hmr: {
-            host: '192.168.43.38',
-            port: 5173,
-        },
-    }
+    // server: {
+    //     host: '0.0.0.0',
+    //     port: 5173,
+    //     strictPort: true,
+    //     hmr: {
+    //         host: '192.168.1.100',
+    //         port: 5173,
+    //     },
+    // }
 });
 

@@ -12,15 +12,24 @@ use App\Models\User;
 use App\Models\Payment;
 use App\Models\ContactInformation;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class DoctorController extends Controller
 {
     public $bg;
     public function index()
     {
-        // Initial rendering with all the doctors
-        $doctors = Doctor::all();
+        // Return all doctors that are online, if the user wants an appointment
+        $doctors = Doctor::with('availabilities')->get();
+
+        if(Session::has('appointment_request')){
+            $week_number = Carbon::now()->weekOfYear;
+
+            $doctors = $doctors->filter(function ($doctor) use ($week_number) {
+                return $doctor->availabilities->contains('week_number', $week_number);
+            });
+        }
         return $this->render($doctors);
     }
 
@@ -179,5 +188,4 @@ class DoctorController extends Controller
         session()->invalidate();
         return redirect()->route('home.index');
     }
-
 }

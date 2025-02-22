@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
 
 class AppointmentController extends Controller
 {
@@ -12,7 +15,23 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        // Check if the user is authenticated
+        if (!Auth::check()) {
+            // Redirect to the login page
+            session([
+                'status' => 'warning',
+                "message"=>"You have to login to book an appointment",
+                'appointment_request' => "The user wants to book an appointment"
+            ]);
+            return redirect()->route('user.login');
+        }
+        // Check if the authenticated user is an patient
+        if (Auth::user()->role !== 'patient') {
+           abort(403, "Unauthorized action");
+        }
+
+        // Return the doctors page
+        return redirect()->route('home.doctors');
     }
 
     /**

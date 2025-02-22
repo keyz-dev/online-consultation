@@ -36,6 +36,14 @@
     </div>
 
     <main class="w-full h-full">
+
+        <div class="bg-warning-bg w-fit text-warning p-4 flexible items-center justify-center">
+            <span class="text-error font-bold rounded-full p-2 border border-error inline-flex items-center justify-center">
+                NB
+            </span>
+
+            <span>This setting is for the upcoming week <br> and can only be done between Wednesday and Friday Of this week</span>
+        </div>
         <p class="text-base text-secondary py-3">Choose an Availability Setting !!</p>
 
         <section class="w-full flex flex-col md:flex-row gap-4">
@@ -63,10 +71,10 @@
             <div class="flex flex-col border border-transparent rounded-sm transition-all duration-200 p-1">
                 <div class="flexible">
                     <a href="">
-                        <x-button text="Individual Setting" class="btn-secondarybtn bg-warning-bg text-warning"/>
+                        <x-button text="Individual Setting" class="btn-secondarybtn bg-special-bg text-special"/>
                     </a>
 
-                    <span title="More info" id="info" class="info_button text-warning text-lg cursor-pointer" onclick="toggleShowInfo(this)">
+                    <span title="More info" id="info" class="info_button text-special text-lg cursor-pointer" onclick="toggleShowInfo(this)">
                         <i class="fas fa-info-circle"></i>
                     </span>
                 </div>

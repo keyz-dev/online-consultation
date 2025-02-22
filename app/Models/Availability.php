@@ -15,7 +15,7 @@ class Availability extends Model
         return $this->belongsTo(Doctor::class);
     }
 
-    public function slot(){
+    public function slots(){
         return $this->hasMany(Slot::class);
     }
 }

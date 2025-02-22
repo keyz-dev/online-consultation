@@ -16,8 +16,8 @@ class Doctor extends Model
         'descriptions',
         'license_number',
         'hospital',
-        'consultation_fee'            
-    ] ;
+        'consultation_fee'
+    ];
 
     public function user(){
         return $this->belongsTo(User::class,'user_id');
@@ -27,7 +27,7 @@ class Doctor extends Model
         return $this->hasMany(Appointment::class,'doctor_id');
     }
 
-    public function availability(){
+    public function availabilities(){
         return $this->hasMany(Availability::class);
     }
 
@@ -35,7 +35,7 @@ class Doctor extends Model
         return $this->belongsTo(Specialty::class);
     }
 
-    // This scope filters all the doctors that have alteast one  active availability for the 
+    // This scope filters all the doctors that have alteast one  active availability for the
     // current week
     public static function scopeActiveAvailabilities($query, $week_number = null){
       return $query->whereHas('availabilities', function($query) use ($week_number){
