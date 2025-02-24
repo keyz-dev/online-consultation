@@ -7,14 +7,7 @@
     ->prefix('book_appointment')
     ->group(function (){
         Route::get('/', 'index');
-
-
-        // Route::name('doctor.')
-        // ->prefix('doctor')
-        // ->group(function () {
-        //     Route::get('/register', 'create')->name('register');
-        //     Route::post('/register', 'store')->name('create');
-        //     Route::get('/{doctor}/profile', 'show')->name('show');
-        // });
+        Route::get('/create/{doctor}', 'create')->name('.book');
+        Route::post('/create/{doctor}/', 'store')->name('.store');
     });
 ?>

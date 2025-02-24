@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Availability;
+use App\Models\Appointment;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,9 +31,10 @@ class DoctorDashboardController extends Controller
     }
     public function appointments(){
         // Get the doctor information
-        $user = Auth::user();
-        $doctor = Doctor::where('user_id', $user->id)->first();
-        return view('dashboard.doctor.appointments.index', compact('doctor'));
+        $doc_id = Auth::user()->doctor->id;
+        $appointments = Appointment::where('doctor_id', $doc_id)->get();
+
+        return view('dashboard.doctor.appointments.index', compact('appointments'));
     }
     public function chats(){
         // Get the doctor information

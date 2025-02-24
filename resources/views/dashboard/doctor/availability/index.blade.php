@@ -75,17 +75,14 @@ function format_time($time){
                         @foreach ($slots as $slot)
                             <div class="inner-flex items-center justify-center p-3 bg-footer text-primary rounded-md">
                                 <span>{{ format_time($slot['start_time']) }} - {{ format_time($slot['end_time']) }}</span>
-
                             </div>
                         @endforeach
                     </div>
                 </div>
-
                 @empty
                     <div class="bg-warning-bg text-warning p-4 flex items-center justify-center">
                         <span>No Availabilty has been set for the current week</span>
                     </div>
-
                 @endforelse
             </div>
         </div>

@@ -33,7 +33,7 @@ class AvailabilityController extends Controller
         $nextWeekSlots = collect($nextWeekAvailability?->slots ?? [])->groupBy('day') ?? new Collection();
 
         // Debugging (optional)
-        
+
         return view('dashboard.doctor.availability.index', compact('currentWeekAvailability','nextWeekAvailability', 'currentWeekSlots', 'nextWeekSlots'));
     }
 
@@ -115,11 +115,8 @@ class AvailabilityController extends Controller
 
         }catch (\Exception $e){
             DB::rollBack();
-
-            dd("An error occurred: ".$e->getMessage());
-            return back()->withErrors(['combined_time_range' => 'There was an error setting the availability']);
+            return back()->withErrors(['combined_time_range' => 'There was an error: '. $e->getMessage()]);
         }
-
     }
 
     protected function validateCombinedHourRange(array $data){
