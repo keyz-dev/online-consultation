@@ -3,11 +3,11 @@
         <div class="w-full h-[90%] flex flex-col items-center sm:items-start justify-center gap-7 px-2 sm:px-0">
             <div class="text-[42px] flex flex-col items-center text-center sm:items-start sm:text-left sm:text-[64px] sm:leading-[70px]">
                 <h1 class="font-custom text-primary">
-                    <p>Our <span class="text-accent font-semibold font-hero">HealthCare</span> <br>Solutions Meet <br><span class="text-accent font-semibold font-hero">Every</span> Need</p> 
+                    <p>Our <span class="text-accent font-semibold font-hero">HealthCare</span> <br>Solutions Meet <br><span class="text-accent font-semibold font-hero">Every</span> Need</p>
                 </h1>
                 <p class="text-secondary mt-10 text-sm w-[100%] md:w-[65%]">With a team of experienced  professionals and cutting-edge technology, we strive to empower individuals</p>
-            </div>  
-            <a href="">
+            </div>
+            <a href="{{route('book_appointment')}}">
                 <x-button
                     text="BOOK APPOINTMENT"
                     icon="<i class='fas fa-arrow-right'></i>"

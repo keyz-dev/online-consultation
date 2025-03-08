@@ -52,6 +52,10 @@ export default {
                     DEFAULT: '#5e63ff',
                     bg: '#adb0fd6b'
                 },
+                special:{
+                    DEFAULT: '#8614c8',
+                    bg: '#d9aefb5e'
+                },
                 footer: '#F1F8FF',
                 border_clr: '#C2C21C2',
                 line_clr: '#DCDEE3'
@@ -83,6 +87,8 @@ export default {
                 'bg-error-bg',
                 'bg-pending',
                 'bg-pending-bg',
+                'bg-special',
+                'bg-special-bg',
                 'bg-footer',
             ],
         },

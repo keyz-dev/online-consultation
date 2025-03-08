@@ -23,7 +23,7 @@ html{
     .btn-secondarybtn {
         @apply bg-accent text-white hover:opacity-75 border border-border_clr;
     }
-    
+
 }
 
 @layer utilities{

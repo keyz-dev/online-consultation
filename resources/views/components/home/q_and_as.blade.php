@@ -5,7 +5,7 @@
             fill: #535455d5;
             transition: 200ms ease;
         }
-        
+
         .question_btn.rotate svg:last-child{
             rotate: 180deg !important;
         }
@@ -48,7 +48,7 @@
 </section>
 
 <script>
-    const toggleSubMenu = (button) =>{    
+    const toggleSubMenu = (button) =>{
         console.log(button.nextElementSibling)
         button.nextElementSibling.classList.toggle('show');
         button.classList.toggle('rotate');

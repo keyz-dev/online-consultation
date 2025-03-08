@@ -14,7 +14,7 @@
     </div>
 
 
-    <a href="" class="flex items-center gap-1 border border-line_clr w-full mt-4">
+    <a href="{{route('book_appointment.book', $doctor)}}" class="flex items-center gap-1 border border-line_clr w-full mt-4">
         <x-button
             text="Book Appointment"
             class="text-sm font-semibold text-secondary px-4 py-2 min-w-full min-h-fit hover:bg-accent hover:text-white"

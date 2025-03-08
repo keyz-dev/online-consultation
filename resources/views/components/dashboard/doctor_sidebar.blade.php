@@ -12,19 +12,23 @@
         <x-dashboard.sidebar_list
             route="dashboard.doctor.appointments"
             title="My Appointment"
+            svg="calendar_month" />
+        <x-dashboard.sidebar_list
+            route="dashboard.doctor.patients"
+            title="My Patients"
             svg="patient" />
         <x-dashboard.sidebar_list
             route="dashboard.doctor.availability"
             title="Availability"
-            svg="doctor" />
+            svg="timer" />
         <x-dashboard.sidebar_list
             route="dashboard.doctor.chats"
             title="Chats"
-            svg="error" />
+            svg="chats" />
         <x-dashboard.sidebar_list
             route="dashboard.doctor.calls"
             title="Calls"
-            svg="lock_open" />
+            svg="phone" />
         <x-dashboard.sidebar_list
             route="dashboard.doctor.profile"
             title="Profile"

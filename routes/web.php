@@ -17,3 +17,6 @@ require base_path('/routes/home/doctor.php');
 
 // Specialty Page handling routes
 require base_path('/routes/home/specialty.php');
+
+// Book appointment handling routes
+require base_path('/routes/home/appointment.php');
