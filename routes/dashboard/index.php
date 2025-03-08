@@ -10,22 +10,22 @@
         ->prefix('admin')
         ->group(function () {
             // admin sidebr routes
-            require __DIR__.'/admin/index.php';
-            
+            require base_path('/routes/dashboard/admin/index.php');
+
             // Admin specialties routes
-            require __DIR__.'/admin/specialty.php';
-            
+            require base_path('/routes/dashboard/admin/specialty.php');
+
             // Admin symptoms routes
-            require __DIR__.'/admin/symptoms.php';
-            
+            require base_path('/routes/dashboard/admin/symptoms.php');
+
             // Admin q_and_a routes
-            require __DIR__.'/admin/q_and_a.php';
+            require base_path('/routes/dashboard/admin/q_and_a.php');
         });
-        
+
         // Doctor Dashboard routes
-        require __DIR__.'/doctor/index.php';
-        
+        require base_path('/routes/dashboard/doctor/index.php');
+
         // Patient Dashboard routes
-        require __DIR__.'/patient/index.php';
+        require base_path('/routes/dashboard/patient/index.php');
     });
 ?>

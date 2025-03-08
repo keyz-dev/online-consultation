@@ -7,14 +7,14 @@
 
 <header class="flex w-full justify-between px-4 items-center bg-white ">
     <div class="flex gap-3 items-center">
-        <a href="{{route('dashboard.admin')}}" class="">
+        <a href="{{route('home.index')}}" class="">
             <x-logo :logo="$logo" />
         </a>
         <button onclick=toggleSideBar() id="toggle-btn" class="text-secondary">
             {!! file_get_contents(public_path('icons/keyboard_double_arrow_left.svg')) !!}
         </button>
         <div>
-            <x-search 
+            <x-search
                 name="global_search"
                 placeholder="Search Activities"
                 class=""
@@ -41,5 +41,5 @@
             </a>
         </div>
         <x-profile_info />
-    </nav>  
+    </nav>
 </header>
